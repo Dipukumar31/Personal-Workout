@@ -670,11 +670,11 @@ var FLEX = { name:'Stretch + Meditation', short:'Stretch', sub:'10 min fast card
     { name:'Cobra', anim:'cobra', segs:[[30,'Hold'],[30,'Hold again']], cues:['Lie on your stomach, hands under your shoulders.','Push up to lift your chest, hips stay on the floor.','If your lower back hurts, rest on your elbows instead (sphinx).'], helps:'Stomach and lower back, after abs day.', link:YT('cobra pose how to') }
   ],
   med: [
-    { name:'Belly breathing', secs:120, pattern:[['in',4,'Breathe in'],['out',6,'Breathe out']], cues:['Sit up straight, one hand on your stomach.','Breathe through your nose: stomach moves out, chest stays still.','Make the out-breath longer than the in-breath.'], helps:'Puts your body into calm mode.', link:YT('diaphragmatic breathing how to') },
-    { name:'Box breathing', secs:180, pattern:[['in',4,'Breathe in'],['hold',4,'Hold'],['out',4,'Breathe out'],['hold0',4,'Hold']], cues:['Breathe in for 4.','Hold for 4.','Breathe out for 4, then hold for 4. Repeat.'], helps:'Most useful for stress and nerves.', link:YT('box breathing 4 4 4 4') },
-    { name:'Alternate nostril breathing', secs:180, pattern:[['in',4,'In through the left nostril'],['out',6,'Out through the right'],['in',4,'In through the right'],['out',6,'Out through the left']], cues:['Right thumb on the right nostril, breathe in through the left.','Close the left with a finger, breathe out through the right.','Then in through the right, out through the left.'], helps:'Breath control and focus.', link:YT('alternate nostril breathing anulom vilom') },
-    { name:'Humming breath', secs:120, pattern:[['in',4,'Breathe in'],['out',8,'Hmmm… out']], cues:['Close your ears with your thumbs, eyes closed.','Take a long breath in through your nose.','Breathe out with your mouth closed, making a hmmm sound.'], helps:'Calms the mind and helps you sleep at night.', link:YT('bhramari pranayama humming bee breath') },
-    { name:'Sit quietly', secs:120, pattern:[['in',4,'Breathe in'],['out',6,'Breathe out']], prompts:['Relax your forehead and eyes.','Loose jaw, teeth apart.','Let your shoulders drop.','Soft stomach, let the breath come by itself.','Feel your arms and legs getting heavy.','Just watch your breath.'], cues:['Eyes closed, let the breath come by itself.','Relax whichever body part the voice names.','If your mind wanders, come back to the breath.'], helps:'The last and calmest part of the session.', link:YT('body scan meditation') }
+    { name:'Belly breathing', secs:120, pattern:[['in',4,'In through the nose'],['out',6,'Out through the mouth']], cues:['Sit up straight, one hand on your stomach.','Breathe in through your nose: stomach moves out, chest stays still.','Breathe out slowly through your mouth, lips slightly pursed, as if blowing out a candle. Make the out-breath longer than the in-breath.'], helps:'Puts your body into calm mode.', link:YT('diaphragmatic breathing how to') },
+    { name:'Box breathing', secs:180, pattern:[['in',4,'In through the nose'],['hold',4,'Hold'],['out',4,'Out through the mouth'],['hold0',4,'Hold']], cues:['Breathe in through your nose for 4.','Hold for 4, gently, without squeezing your throat.','Breathe out through your mouth for 4, then hold for 4. Repeat.'], helps:'Most useful for stress and nerves.', link:YT('box breathing 4 4 4 4') },
+    { name:'Alternate nostril breathing', secs:180, pattern:[['in',4,'In through the left nostril'],['out',6,'Out through the right nostril'],['in',4,'In through the right nostril'],['out',6,'Out through the left nostril']], cues:['Mouth closed the whole time: in and out only through the nose.','Right thumb on the right nostril, breathe in through the left. Close the left with your ring finger, breathe out through the right.','Then in through the right, out through the left. Skip it if your nose is blocked.'], helps:'Breath control and focus.', link:YT('alternate nostril breathing anulom vilom') },
+    { name:'Humming breath', secs:120, pattern:[['in',4,'In through the nose'],['out',8,'Hmmm… out through the nose']], cues:['Close your ears with your thumbs, eyes closed.','Take a long breath in through your nose.','Lips together, mouth closed: breathe out through your nose making a hmmm sound.'], helps:'Calms the mind and helps you sleep at night.', link:YT('bhramari pranayama humming bee breath') },
+    { name:'Sit quietly', secs:120, pattern:[['in',4,'In through the nose'],['out',6,'Out through the nose']], prompts:['Relax your forehead and eyes.','Loose jaw, teeth apart.','Let your shoulders drop.','Soft stomach, let the breath come by itself.','Feel your arms and legs getting heavy.','Just watch your breath.'], cues:['Eyes closed, mouth closed, breathe gently through your nose.','Relax whichever body part the voice names.','If your mind wanders, come back to the breath.'], helps:'The last and calmest part of the session.', link:YT('body scan meditation') }
   ]
 };
 function segsTotal(segs){ return segs.reduce(function(a, x){ return a + x[0]; }, 0); }
@@ -1311,7 +1311,7 @@ function renderRunner(){
     foot = pauseFoot;
   } else if(st.type === 'medprep'){
     body = '<p class="r-k">Meditation, 12 min</p><h2 class="r-name">Sit comfortably</h2>' + breathBox() +
-      '<ul class="plain"><li>Sit on the floor or a chair, back straight, shoulders relaxed.</li><li>You can close your eyes. Beeps and the voice tell you when to breathe in and out.</li><li>If you feel dizzy or uneasy, go back to normal breathing.</li></ul>' +
+      '<ul class="plain"><li>Sit on the floor or a chair, back straight, shoulders relaxed.</li><li>Always breathe in through your nose. The screen and the voice tell you each time whether to breathe out through your mouth or your nose.</li><li>You can close your eyes; beeps mark each change.</li><li>If you feel dizzy or uneasy, go back to normal breathing.</li></ul>' +
       '<p class="small-c">5 kinds of breathing: belly, box, alternate nostril, humming, then sitting quietly.</p>';
     foot = '<button class="btn btn-primary" data-act="next">Start</button>';
   } else if(st.type === 'rest'){
@@ -1446,7 +1446,7 @@ function paintBreath(root, b){
 function breathFrame(){
   if(!R) return;
   var st = R.steps[R.i];
-  if(st.type === 'medprep'){ var box = document.querySelector('#runner .breath'); if(box){ var e0 = (performance.now() - T0)/1000; paintBreath(box, breathState([['in',4,'Breathe in'],['out',6,'Breathe out']], e0)); } return; }
+  if(st.type === 'medprep'){ var box = document.querySelector('#runner .breath'); if(box){ var e0 = (performance.now() - T0)/1000; paintBreath(box, breathState([['in',4,'In through the nose'],['out',6,'Out through the mouth']], e0)); } return; }
   if(st.type !== 'breath' || !R.timer) return;
   var el = (R.timer.total - remaining()) / 1000, b = breathState(st.pattern, el);
   var root = document.querySelector('#runner .breath'); if(root) paintBreath(root, b);
