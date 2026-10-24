@@ -552,7 +552,7 @@ var W = {
       { name:'Easy Australian pull', secs:90, anim:'aus', desc:'2 x 6 slow reps. Keep your body at a steeper (easier) angle.' }
     ],
     main: [
-      { id:'aus', anim:'aus', name:'Australian pull-up', sets:4, lo:6, hi:12, unit:'reps', rest:90,
+      { id:'aus', anim:'aus', name:'Australian pull-up', sets:3, lo:6, hi:12, unit:'reps', rest:90,
         how:['Lie on your back under a sturdy table. Grip the edge, hands a little wider than your shoulders.','Heels on the floor, body in one straight line from head to heels. Do not let your hips sag.','Pull your chest to the edge, squeeze your shoulder blades, pause 1 sec at the top.','Lower slowly over 2–3 sec.'],
         easy:'Bend your knees and keep your feet flat on the floor.', hard:'Feet on a chair, or a 3 sec hold at the top.',
         warn:'First check that the table cannot tip over. Put something heavy on the other side or push it against a wall. Never use a stick balanced between two chairs.',
@@ -579,7 +579,7 @@ var W = {
       { name:'Chair dip, half range', secs:45, anim:'dips', desc:'6 reps, only a little way down.' }
     ],
     main: [
-      { id:'pushup', anim:'pushup', name:'Push-up', sets:4, lo:8, hi:15, unit:'reps', rest:90,
+      { id:'pushup', anim:'pushup', name:'Push-up', sets:3, lo:8, hi:15, unit:'reps', rest:90,
         how:['Hands a little wider than your shoulders, fingers forward. Stomach and glutes tight, body in one straight line.','Keep elbows at about 45° to your body; do not flare them out in a “T”.','Lower your chest to 2–3 inches from the floor, then push.'],
         easy:'On your knees, or hands on a bed.', hard:'Feet on a chair.', link:YT('push up proper form') },
       { id:'pike', anim:'pike', name:'Pike push-up', sets:3, lo:6, hi:10, unit:'reps', rest:75,
@@ -591,7 +591,7 @@ var W = {
       { id:'diamond', anim:'diamond', name:'Diamond push-up', sets:3, lo:6, hi:12, unit:'reps', rest:60,
         how:['Hands under your chest, thumbs and fingers forming a diamond.','Keep your elbows close to your body.','Body straight, chest down to your hands.'],
         easy:'On your knees.', hard:'Take 3 sec to go down.', link:YT('diamond push up how to') },
-      { id:'taps', anim:'taps', name:'Plank shoulder taps', sets:2, lo:20, hi:20, unit:'taps', rest:45,
+      { id:'taps', anim:'taps', name:'Plank shoulder taps', sets:3, lo:20, hi:20, unit:'taps', rest:45,
         how:['High plank, feet a little apart.','Touch the opposite shoulder with one hand, then the other.','Your hips should not rock side to side.'],
         easy:'Feet wider apart, or on your knees.', hard:'Feet close together.', link:YT('plank shoulder taps form') }
     ] },
@@ -611,7 +611,7 @@ var W = {
       { id:'lunge', anim:'lunge', name:'Reverse lunge', sets:3, lo:8, hi:12, unit:'reps', side:true, rest:45,
         how:['Step one foot back so both knees bend to about 90°.','Back knee comes close to the floor without touching it.','Push through your front heel to come back up.'],
         easy:'Hold on to a wall.', hard:'Wear a backpack.', link:YT('reverse lunge form beginner') },
-      { id:'bridge', anim:'bridge', name:'Glute bridge', sets:2, lo:15, hi:15, unit:'reps', rest:30,
+      { id:'bridge', anim:'bridge', name:'Glute bridge', sets:3, lo:15, hi:15, unit:'reps', rest:30,
         how:['Lie on your back, knees bent, feet on the floor.','Lift your hips, squeeze your glutes, hold 1 sec.','Do not arch your lower back too much.'],
         hard:'On one leg (single-leg).', link:YT('glute bridge how to') },
       { id:'deadbug', anim:'deadbug', name:'Dead bug', sets:3, lo:8, hi:10, unit:'reps', side:true, rest:30,
@@ -623,10 +623,10 @@ var W = {
       { id:'legraise', anim:'legraise', name:'Lying leg raise', sets:3, lo:10, hi:12, unit:'reps', rest:30,
         how:['Lie on your back, hands under your hips.','Raise your legs to 90°, then lower them slowly.','Stop where your lower back starts to lift off the floor.'],
         easy:'With bent knees.', link:YT('lying leg raise form') },
-      { id:'bicycle', anim:'bicycle', name:'Bicycle crunch', sets:2, lo:12, hi:15, unit:'reps', side:true, rest:30,
+      { id:'bicycle', anim:'bicycle', name:'Bicycle crunch', sets:3, lo:12, hi:15, unit:'reps', side:true, rest:30,
         how:['Shoulders slightly off the floor.','Bring the opposite elbow towards the opposite knee with a slow twist.','No speed. Do not pull your neck with your hands.'],
         link:YT('bicycle crunch proper form') },
-      { id:'side', anim:'side', name:'Side plank', sets:2, lo:20, hi:30, unit:'sec', side:true, rest:20,
+      { id:'side', anim:'side', name:'Side plank', sets:3, lo:20, hi:30, unit:'sec', side:true, rest:20,
         how:['On one elbow, body straight on its side.','Do not let your hips drop.','Do both sides.'],
         easy:'Bottom knee on the floor.', link:YT('side plank beginner form') }
     ] }
@@ -636,8 +636,7 @@ ORDER.forEach(function(w){ W[w].main.forEach(function(e){ EXMAP[e.id] = e; }); }
 
 var BOX = {
   base: { secs:120, rounds:[
-    { desc:'Easy round. Jab + footwork, move all around the bag.', link:YT('boxing stance footwork beginner') },
-    { desc:'1-2 (jab-cross). Form first, not speed.', link:YT('jab cross technique beginner') },
+    { desc:'Easy round. Jab + footwork around the bag, then 1-2 (jab-cross). Form first, not speed.', link:YT('jab cross technique beginner') },
     { desc:'1-2-3 (jab-cross-hook).', link:YT('boxing hook technique beginner') },
     { desc:'Uppercut mix: 1-2, then 5-6.', link:YT('boxing uppercut technique beginner') },
     { desc:'Finisher: 20 sec fast straight punches, 10 sec rest, 4 times.', segs:[[20,'Fast!'],[10,'Rest'],[20,'Fast!'],[10,'Rest'],[20,'Fast!'],[10,'Rest'],[20,'Fast!'],[10,'Rest']], link:YT('heavy bag workout beginner mistakes') }
@@ -683,11 +682,21 @@ var VIG_GOAL = 75;
 function vigEq(s){
   if(s.w === 'walk') return s.m / 2;
   if(s.w === 'flex') return (s.f && s.f.cv) || 0;
-  var m = s.bxm || 2, n = m === 3 ? 4 : 5, eq = 0;
+  var m = s.bxm || 2, n = 4, eq = 0;
   for(var r = 1; r <= (s.bx || 0); r++) eq += r === 1 ? m * 0.5 : r === n ? m * 2/3 : m;
   return eq;
 }
 var ADV_AFTER = 15;
+/* rough minutes: reps about 3 sec each, plus rests between sets */
+function mainMin(d){
+  var t = 0;
+  d.main.forEach(function(ex, i){
+    var mid = (ex.lo + ex.hi)/2, work = (ex.unit === 'sec' ? mid : ex.unit === 'taps' ? mid*1.5 : mid*3) * (ex.side ? 2 : 1);
+    t += ex.sets*work + (ex.sets - (i === d.main.length-1 ? 1 : 0))*ex.rest;
+  });
+  return Math.round(t/60);
+}
+function boxMin(bp){ return Math.round((bp.rounds.length*bp.secs + (bp.rounds.length-1)*60)/60); }
 
 /* calories: MET x 3.5 x kg / 200 per minute (Compendium of Physical Activities; estimates only) */
 var MET = { warmup:3.8, main:3.8, box:5.8, boxrest:1.3, cardio:7.5, stretch:2.3, med:1.0, prep:1.3, walk:4.3 };
@@ -962,7 +971,7 @@ function renderHome(){
   } else {
     var d = W[w];
     h += '<section class="hero" style="' + wvars(w) + '"><p class="lead">' + (pick && pick !== dw ? 'Your pick' : 'Today’s workout') + '</p><h2 class="name">' + esc(d.name) + '</h2>' + fig(d.main[0].anim) +
-      '<p class="sub">' + esc(d.sub) + '</p><p class="meta">45 min: 5 warm-up, 25 workout, 15 boxing (' + bp.rounds.length + ' rounds x ' + (bp.secs/60) + ' min)</p><button class="btn btn-hero" data-act="start" data-w="' + w + '">Start workout</button></section>';
+      '<p class="sub">' + esc(d.sub) + '</p><p class="meta">About ' + (5 + mainMin(d) + boxMin(bp)) + ' min: 5 warm-up, ' + mainMin(d) + ' workout, ' + boxMin(bp) + ' boxing (' + bp.rounds.length + ' rounds x ' + (bp.secs/60) + ' min)</p><button class="btn btn-hero" data-act="start" data-w="' + w + '">Start workout</button></section>';
   }
   /* what to do today, and how much */
   var showW = restHero ? (doneToday ? doneToday.w : null) : w;
@@ -1017,11 +1026,11 @@ function workoutBlocks(w, logs){
   return '<section class="card" style="' + wvars(w) + '"><h3>Warm-up, 5 min</h3>' + d.warmup.map(function(m, i){
     return '<details class="ex"><summary><span class="ex-n">' + (i+1) + '</span><span class="ex-t"><b>' + esc(m.name) + '</b><small>' + esc(m.desc) + '</small></span><span class="ex-tm">' + fmtS(m.secs) + '</span></summary><div class="ex-b">' + fig(m.anim) + '<div class="links">' + demoBtn('wu:' + w + ':' + i) + (m.link ? vid(m.link) : '') + '</div></div></details>';
   }).join('') + '</section>' +
-  '<section class="card" style="' + wvars(w) + '"><h3>Workout, 25 min</h3>' + d.main.map(function(ex, i){ return exDetails(ex, i, w, logs); }).join('') + '</section>';
+  '<section class="card" style="' + wvars(w) + '"><h3>Workout, about ' + mainMin(d) + ' min</h3>' + d.main.map(function(ex, i){ return exDetails(ex, i, w, logs); }).join('') + '</section>';
 }
 function boxRoundsCard(logs){
   var bp = isAdv() ? BOX.adv : BOX.base;
-  return '<section class="card" style="' + wvars('box') + '"><h3>Boxing, 15 min</h3><p class="small">' + bp.rounds.length + ' rounds x ' + (bp.secs/60) + ' min, 1 min rest in between. Gloves and hand wraps on.' + (logs ? ' Done: ' + (logs.bx || 0) + ' / ' + bp.rounds.length + ' rounds.' : '') + '</p>' + bp.rounds.map(function(r, i){
+  return '<section class="card" style="' + wvars('box') + '"><h3>Boxing, ' + boxMin(bp) + ' min</h3><p class="small">' + bp.rounds.length + ' rounds x ' + (bp.secs/60) + ' min, 1 min rest in between. Gloves and hand wraps on.' + (logs ? ' Done: ' + (logs.bx || 0) + ' / ' + bp.rounds.length + ' rounds.' : '') + '</p>' + bp.rounds.map(function(r, i){
     return '<details class="ex"><summary><span class="ex-n">' + (i+1) + '</span><span class="ex-t"><b>Round ' + (i+1) + '</b><small>' + esc(r.desc) + '</small></span><span class="ex-tm">' + fmtS(bp.secs) + '</span></summary><div class="ex-b"><div class="links">' + demoBtn('box:' + i) + vid(r.link) + '</div></div></details>';
   }).join('') + '</section>';
 }
@@ -1044,13 +1053,13 @@ function renderPlan(){
   var h = '<header class="top"><h1>Plan</h1></header>';
   var wk = [['Mon','pull'],['Tue','flex'],['Wed','push'],['Thu','flex'],['Fri','legs'],['Sat','flex'],['Sun',null]];
   h += '<section class="card"><h3>Weekly plan</h3><ul class="wl">' + wk.map(function(r){
-    return '<li><b>' + r[0] + '</b>' + (r[1] ? '<span class="tag" style="' + wvars(r[1]) + '">' + esc(r[1] === 'flex' ? 'Cardio + ' + FLEX.name + ' (40 min)' : W[r[1]].name + ' + boxing (45 min)') + '</span>' : '<span class="small">Rest, or a brisk walk</span>') + '</li>';
+    return '<li><b>' + r[0] + '</b>' + (r[1] ? '<span class="tag" style="' + wvars(r[1]) + '">' + esc(r[1] === 'flex' ? 'Cardio + ' + FLEX.name + ' (40 min)' : W[r[1]].name + ' + boxing (about ' + (5 + mainMin(W[r[1]]) + boxMin(isAdv() ? BOX.adv : BOX.base)) + ' min)') + '</span>' : '<span class="small">Rest, or a brisk walk</span>') + '</li>';
   }).join('') + '</ul><p class="small" style="margin-top:8px">The Today tab always shows that day’s plan. Missed a day? Carry on with today’s plan, or pick the missed one under “Pick one” on Today.</p></section>';
   var segs = [['pull','Pull'],['push','Push'],['legs','Abs + Legs'],['box','Boxing'],['flex','Stretch'],['med','Meditation']];
   h += '<div class="seg" role="group" aria-label="What to show">' + segs.map(function(s){ var c = s[0] === 'med' ? 'flex' : s[0]; return '<button style="' + wvars(c) + '" data-act="plan-sel" data-w="' + s[0] + '" aria-pressed="' + (planSel === s[0]) + '">' + s[1] + '</button>'; }).join('') + '</div>';
   if(planSel === 'box'){
     var bp = isAdv() ? BOX.adv : BOX.base;
-    h += '<section class="card" style="' + wvars('box') + '"><h3>Boxing, 15 min</h3>' + fig('box') + '<p>After every workout. ' + bp.rounds.length + ' rounds x ' + (bp.secs/60) + ' min, 1 min rest in between.</p><p class="warn">Never hit the bag without gloves and hand wraps. For the first 2 weeks, no power, only clean technique.</p>' + vid(YT('how to wrap hands for boxing'), 'How to wrap your hands') + '</section>';
+    h += '<section class="card" style="' + wvars('box') + '"><h3>Boxing, ' + boxMin(bp) + ' min</h3>' + fig('box') + '<p>After every workout. ' + bp.rounds.length + ' rounds x ' + (bp.secs/60) + ' min, 1 min rest in between.</p><p class="warn">Never hit the bag without gloves and hand wraps. For the first 2 weeks, no power, only clean technique.</p>' + vid(YT('how to wrap hands for boxing'), 'How to wrap your hands') + '</section>';
     h += '<section class="card"><h3>Basics</h3><ul class="wl">' + [
       ['Stance','Left foot forward, right foot back, knees slightly bent. Hands near your face.'],
       ['After a punch','Bring the hand straight back to your face. Breathe out sharply with each punch.'],
@@ -1339,7 +1348,7 @@ function renderRunner(){
     foot = '<button class="btn btn-primary" data-act="set-done">Set done</button>';
   } else if(st.type === 'boxprep'){
     var bp = R.adv ? BOX.adv : BOX.base;
-    body = '<p class="r-k">Boxing, 15 min</p><h2 class="r-name">Gloves on</h2>' + fig('box') + '<p class="warn">Never hit the bag without gloves and hand wraps. Sprained wrists and scraped knuckles are the most common injuries.</p><p>' + vid(YT('how to wrap hands for boxing'), 'How to wrap your hands') + '</p>' +
+    body = '<p class="r-k">Boxing, ' + boxMin(bp) + ' min</p><h2 class="r-name">Gloves on</h2>' + fig('box') + '<p class="warn">Never hit the bag without gloves and hand wraps. Sprained wrists and scraped knuckles are the most common injuries.</p><p>' + vid(YT('how to wrap hands for boxing'), 'How to wrap your hands') + '</p>' +
       '<details class="how"><summary>Basics</summary><ul><li>Stance: left foot forward, right foot back, knees slightly bent.</li><li>Hands near your face, chin down. After a punch, bring the hand straight back.</li><li>Breathe out sharply with each punch.</li><li>Wrist straight, land with the first 2 knuckles.</li><li>1 jab, 2 cross, 3 hook, 5/6 uppercut.</li></ul></details>' +
       '<p class="small" style="margin-top:12px">' + bp.rounds.length + ' rounds x ' + (bp.secs/60) + ' min, 1 min rest in between. +12 XP for every full round.</p>';
     foot = '<button class="btn btn-primary" data-act="next">Ready, start round</button>';
