@@ -1,15 +1,15 @@
 <!doctype html>
-<html lang="hi-Latn">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Ghar ka Workout</title>
+<title>Personal Workout</title>
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#12695B">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="Workout">
+<meta name="apple-mobile-web-app-title" content="Personal Workout">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -117,6 +117,7 @@ p{ margin:0 0 8px; }
 .chips{ display:flex; gap:8px; flex-wrap:wrap; margin-top:8px; }
 .chip{ min-height:44px; padding:0 16px; border-radius:22px; border:2px solid var(--c); background:transparent; font-weight:600; }
 .chip.on{ background:var(--c); color:var(--onc); }
+.sec-h{ font-size:19px; font-weight:600; margin:22px 2px -4px; }
 
 /* badges */
 .badges{ display:grid; grid-template-columns:repeat(auto-fill,minmax(88px,1fr)); gap:12px 8px; margin-top:10px; }
@@ -297,12 +298,12 @@ ul.plain li{ margin-bottom:6px; }
 <main class="app" id="app"></main>
 <nav class="tabbar" aria-label="Sections">
   <div class="tabbar-in" role="tablist">
-    <button class="tab" role="tab" data-act="tab" data-tab="aaj">Aaj</button>
+    <button class="tab" role="tab" data-act="tab" data-tab="aaj">Today</button>
     <button class="tab" role="tab" data-act="tab" data-tab="plan">Plan</button>
     <button class="tab" role="tab" data-act="tab" data-tab="record">Record</button>
   </div>
 </nav>
-<section class="runner" id="runner" hidden aria-label="Session chal raha hai"></section>
+<section class="runner" id="runner" hidden aria-label="Session in progress"></section>
 <canvas id="confetti" aria-hidden="true"></canvas>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script>
@@ -542,92 +543,92 @@ var RM = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: red
 function YT(q){ return 'https://www.youtube.com/results?search_query=' + q.split(' ').map(encodeURIComponent).join('+'); }
 
 var W = {
-  pull: { name:'Pull', sub:'Back, biceps aur kandhe ka peechhla hissa',
+  pull: { name:'Pull', sub:'Back, biceps and rear shoulders',
     warmup: [
-      { name:'Arm circles', secs:60, anim:'circles', desc:'30 sec aage, 30 sec peeche ghumao.' },
-      { name:'Scapula squeeze', secs:45, anim:'squeeze', desc:'15 reps. Khade hokar shoulder blades peeche dabao, 2 sec hold.', link:YT('scapular retraction exercise') },
-      { name:'Reverse snow angel', secs:60, anim:'snow', desc:'10 slow, halke reps. Pet ke bal leto.' },
-      { name:'Cat-cow', secs:45, anim:'catcow', desc:'8 reps, saans ke saath dheere.', link:YT('cat cow stretch kaise kare') },
-      { name:'Easy Australian pull', secs:90, anim:'aus', desc:'2 x 6 slow reps. Body zyada khadi angle pe rakho.' }
+      { name:'Arm circles', secs:60, anim:'circles', desc:'30 sec forward, 30 sec backward.' },
+      { name:'Scapula squeeze', secs:45, anim:'squeeze', desc:'15 reps. Standing, squeeze your shoulder blades back and hold 2 sec.', link:YT('scapular retraction exercise') },
+      { name:'Reverse snow angel', secs:60, anim:'snow', desc:'10 slow, light reps. Lie on your stomach.' },
+      { name:'Cat-cow', secs:45, anim:'catcow', desc:'8 reps, slowly with your breath.', link:YT('cat cow stretch how to') },
+      { name:'Easy Australian pull', secs:90, anim:'aus', desc:'2 x 6 slow reps. Keep your body at a steeper (easier) angle.' }
     ],
     main: [
       { id:'aus', anim:'aus', name:'Australian pull-up', sets:4, lo:6, hi:12, unit:'reps', rest:90,
-        how:['Mazboot table ke neeche peeth ke bal leto. Edge pakdo, haath kandhe se thoda wide.','Edi zameen pe, body sir se edi tak ek seedhi line. Kamar latakni nahi chahiye.','Chest ko edge tak kheecho, shoulder blades dabao, upar 1 sec ruko.','Neeche 2–3 sec mein dheere jao.'],
-        easy:'Ghutne mod ke pair zameen pe rakho.', hard:'Pair chair pe rakho, ya upar 3 sec hold.',
-        warn:'Pehle check karo table palatti nahi. Dusri side bhaari saman rakho ya deewar se laga do. Do chair ke beech danda mat lagao.',
-        link:YT('australian pull up kaise kare'), link2:YT('table inverted row at home') },
+        how:['Lie on your back under a sturdy table. Grip the edge, hands a little wider than your shoulders.','Heels on the floor, body in one straight line from head to heels. Do not let your hips sag.','Pull your chest to the edge, squeeze your shoulder blades, pause 1 sec at the top.','Lower slowly over 2–3 sec.'],
+        easy:'Bend your knees and keep your feet flat on the floor.', hard:'Feet on a chair, or a 3 sec hold at the top.',
+        warn:'First check that the table cannot tip over. Put something heavy on the other side or push it against a wall. Never use a stick balanced between two chairs.',
+        link:YT('australian pull up how to'), link2:YT('table inverted row at home') },
       { id:'brow', anim:'brow', name:'Backpack bent-over row', sets:3, lo:10, hi:15, unit:'reps', rest:60,
-        how:['Bag mein kitabein bharo. Ghutne thode mode, peeth seedhi rakh ke 45° aage jhuko.','Bag ko pet ki taraf kheecho, elbow peeche jaaye.','Neeche dheere chhodo.'],
-        easy:'Bag halka karo.', hard:'Bag mein aur kitabein, ya upar 1 sec hold.', link:YT('backpack bent over row at home') },
+        how:['Fill a backpack with books. Knees slightly bent, back straight, lean forward about 45°.','Pull the bag towards your stomach, elbows going back.','Lower it slowly.'],
+        easy:'Make the bag lighter.', hard:'More books in the bag, or a 1 sec hold at the top.', link:YT('backpack bent over row at home') },
       { id:'snow', anim:'snow', name:'Reverse snow angel', sets:3, lo:12, hi:12, unit:'reps', rest:45,
-        how:['Pet ke bal leto, chest zameen se thoda upar, angoothe upar ki taraf.','Haath side se ghuma ke sir ke upar le jao, phir wapas hips tak.','Dheere karo, haath zameen ko na chhuein.'],
-        hard:'Dono haath mein paani ki chhoti bottle.', link:YT('prone reverse snow angel exercise') },
+        how:['Lie on your stomach, chest slightly off the floor, thumbs pointing up.','Sweep your arms from your sides to over your head, then back to your hips.','Move slowly; your hands should not touch the floor.'],
+        hard:'Hold a small water bottle in each hand.', link:YT('prone reverse snow angel exercise') },
       { id:'super', anim:'sup', name:'Superman hold', sets:3, lo:20, hi:30, unit:'sec', rest:45,
-        how:['Pet ke bal, haath aage seedhe.','Haath, chest aur pair ek saath upar uthao.','Gardan neutral rakho (neeche dekho), glutes tight, hold.'],
-        hard:'Hold 40 sec tak le jao.', link:YT('superman hold exercise form') },
+        how:['Lie on your stomach, arms straight in front.','Lift your arms, chest and legs together.','Keep your neck neutral (look down), squeeze your glutes and hold.'],
+        hard:'Build up to a 40 sec hold.', link:YT('superman hold exercise form') },
       { id:'curl', anim:'curl', name:'Backpack bicep curl', sets:3, lo:10, hi:15, unit:'reps', rest:45,
-        how:['Bag ka handle pakdo, elbow body se chipke rahein.','Sirf forearm upar laao, dheere neeche.','Body jhula ke mat uthao.'],
-        hard:'Bag bhaari karo, ya neeche 3 sec mein laao.', link:YT('backpack bicep curl at home') }
+        how:['Hold the bag by its handle, elbows tucked against your body.','Lift with your forearm only, lower slowly.','Do not swing your body to lift it.'],
+        hard:'Make the bag heavier, or take 3 sec to lower it.', link:YT('backpack bicep curl at home') }
     ] },
-  push: { name:'Push', sub:'Chest, kandhe aur triceps',
+  push: { name:'Push', sub:'Chest, shoulders and triceps',
     warmup: [
-      { name:'Wrist + arm circles', secs:75, anim:'circles', desc:'Kalaai dono taraf ghumao, phir haath ke bade gol chakkar.' },
-      { name:'Scapular push-up', secs:45, anim:'scap', desc:'10 reps. Plank mein sirf shoulder blades andar-bahar.', link:YT('scapular push up') },
-      { name:'Incline push-up', secs:90, anim:'incline', desc:'2 x 10 easy. Haath bed ya table pe.' },
-      { name:'Easy pike push-up', secs:45, anim:'pike', desc:'6 slow reps, aadhi range.' },
-      { name:'Chair dip, aadhi range', secs:45, anim:'dips', desc:'6 reps, sirf thoda neeche.' }
+      { name:'Wrist + arm circles', secs:75, anim:'circles', desc:'Roll your wrists both ways, then make big arm circles.' },
+      { name:'Scapular push-up', secs:45, anim:'scap', desc:'10 reps. In a plank, move only your shoulder blades in and out.', link:YT('scapular push up') },
+      { name:'Incline push-up', secs:90, anim:'incline', desc:'2 x 10 easy. Hands on a bed or table.' },
+      { name:'Easy pike push-up', secs:45, anim:'pike', desc:'6 slow reps, half range.' },
+      { name:'Chair dip, half range', secs:45, anim:'dips', desc:'6 reps, only a little way down.' }
     ],
     main: [
       { id:'pushup', anim:'pushup', name:'Push-up', sets:4, lo:8, hi:15, unit:'reps', rest:90,
-        how:['Haath kandhe se thoda wide, ungliyan aage. Pet aur glutes tight, body ek seedhi line.','Elbows body se lagbhag 45° pe rakho, “T” shape mein bahar mat failao.','Chest zameen se 2–3 inch tak, phir push.'],
-        easy:'Ghutno pe, ya haath bed pe.', hard:'Pair chair pe.', link:YT('push up sahi tarika hindi') },
+        how:['Hands a little wider than your shoulders, fingers forward. Stomach and glutes tight, body in one straight line.','Keep elbows at about 45° to your body; do not flare them out in a “T”.','Lower your chest to 2–3 inches from the floor, then push.'],
+        easy:'On your knees, or hands on a bed.', hard:'Feet on a chair.', link:YT('push up proper form') },
       { id:'pike', anim:'pike', name:'Pike push-up', sets:3, lo:6, hi:10, unit:'reps', rest:75,
-        how:['Hips upar uthao, body ulta “V” bane. Haath kandhe jitne khule.','Sir ko haathon ke thoda aage zameen ki taraf le jao.','Elbows peeche ki taraf mudein, phir push.'],
-        easy:'Range kam rakho.', hard:'Pair chair pe rakh ke.', link:YT('pike push up form beginner') },
+        how:['Lift your hips so your body makes an upside-down “V”. Hands shoulder-width apart.','Lower your head towards the floor just in front of your hands.','Elbows bend backwards, then push.'],
+        easy:'Use a smaller range.', hard:'Feet on a chair.', link:YT('pike push up form beginner') },
       { id:'dips', anim:'dips', name:'Chair dips', sets:3, lo:8, hi:15, unit:'reps', rest:60,
-        how:['Mazboot chair deewar se laga do. Pahiye wali chair bilkul nahi.','Haath edge pe, ungliyan aage.','Upper arm zameen ke parallel tak neeche, usse zyada nahi.'],
-        easy:'Ghutne mode.', hard:'Pair seedhe aage.', warn:'Kandhe mein chubhta dard ho to depth kam karo ya ye exercise chhod do.', link:YT('chair dips at home form') },
+        how:['Push a sturdy chair against a wall. Never use a chair with wheels.','Hands on the edge, fingers forward.','Lower until your upper arms are parallel to the floor, no further.'],
+        easy:'Bend your knees.', hard:'Legs straight out in front.', warn:'If you feel a sharp pain in your shoulder, go less deep or skip this exercise.', link:YT('chair dips at home form') },
       { id:'diamond', anim:'diamond', name:'Diamond push-up', sets:3, lo:6, hi:12, unit:'reps', rest:60,
-        how:['Haath chest ke neeche, angoothe aur ungliyon se diamond shape.','Elbows body se chipke rahein.','Body seedhi, chest haathon tak.'],
-        easy:'Ghutno pe.', hard:'Neeche 3 sec mein jao.', link:YT('diamond push up kaise kare') },
+        how:['Hands under your chest, thumbs and fingers forming a diamond.','Keep your elbows close to your body.','Body straight, chest down to your hands.'],
+        easy:'On your knees.', hard:'Take 3 sec to go down.', link:YT('diamond push up how to') },
       { id:'taps', anim:'taps', name:'Plank shoulder taps', sets:2, lo:20, hi:20, unit:'taps', rest:45,
-        how:['High plank, pair thode khule.','Ek haath se ulta kandha touch karo, phir dusra.','Hips idhar-udhar hilne nahi chahiye.'],
-        easy:'Pair aur khole, ya ghutno pe.', hard:'Pair paas-paas.', link:YT('plank shoulder taps form') }
+        how:['High plank, feet a little apart.','Touch the opposite shoulder with one hand, then the other.','Your hips should not rock side to side.'],
+        easy:'Feet wider apart, or on your knees.', hard:'Feet close together.', link:YT('plank shoulder taps form') }
     ] },
-  legs: { name:'Abs + Legs', sub:'Core, legs aur glutes',
+  legs: { name:'Abs + Legs', sub:'Core, legs and glutes',
     warmup: [
-      { name:'March / high knees', secs:60, anim:'march', desc:'Jagah pe march, ya halke high knees.' },
-      { name:'Bodyweight squat', secs:45, anim:'squat', desc:'10 reps, aadhi depth, slow.' },
-      { name:'Hip circles + leg swings', secs:60, anim:'swing', desc:'Hips ke gol chakkar, phir har pair aage-peeche jhulao.', link:YT('leg swings hip circles warm up') },
-      { name:'Cat-cow', secs:45, anim:'catcow', desc:'8 reps, saans ke saath dheere.', link:YT('cat cow stretch kaise kare') },
+      { name:'March / high knees', secs:60, anim:'march', desc:'March on the spot, or easy high knees.' },
+      { name:'Bodyweight squat', secs:45, anim:'squat', desc:'10 reps, half depth, slow.' },
+      { name:'Hip circles + leg swings', secs:60, anim:'swing', desc:'Circle your hips, then swing each leg forward and back.', link:YT('leg swings hip circles warm up') },
+      { name:'Cat-cow', secs:45, anim:'catcow', desc:'8 reps, slowly with your breath.', link:YT('cat cow stretch how to') },
       { name:'Dead bug', secs:45, anim:'deadbug', desc:'8 slow reps.' },
       { name:'Glute bridge', secs:45, anim:'bridge', desc:'10 reps.' }
     ],
     main: [
       { id:'squat', anim:'squat', name:'Squat', sets:3, lo:15, hi:20, unit:'reps', rest:45,
-        how:['Pair kandhe jitne khule, ungliyan thodi bahar.','Hips peeche le jao jaise chair pe baith rahe ho, edi zameen pe.','Ghutne ungliyon ki direction mein, thighs zameen ke parallel tak, chest upar.'],
-        easy:'Chair pe baith ke uthna.', hard:'Backpack pehen ke, ya neeche 3 sec.', link:YT('bodyweight squat sahi tarika') },
+        how:['Feet shoulder-width apart, toes turned out a little.','Push your hips back as if sitting on a chair, heels on the floor.','Knees follow your toes, thighs down to parallel, chest up.'],
+        easy:'Sit down on a chair and stand up.', hard:'Wear a backpack, or take 3 sec to go down.', link:YT('bodyweight squat proper form') },
       { id:'lunge', anim:'lunge', name:'Reverse lunge', sets:3, lo:8, hi:12, unit:'reps', side:true, rest:45,
-        how:['Ek pair peeche le jao, dono ghutne lagbhag 90°.','Peeche wala ghutna zameen ke paas, chhue nahi.','Aage wali edi se push karke wapas.'],
-        easy:'Deewar pakad ke.', hard:'Backpack pehen ke.', link:YT('reverse lunge form beginner') },
+        how:['Step one foot back so both knees bend to about 90°.','Back knee comes close to the floor without touching it.','Push through your front heel to come back up.'],
+        easy:'Hold on to a wall.', hard:'Wear a backpack.', link:YT('reverse lunge form beginner') },
       { id:'bridge', anim:'bridge', name:'Glute bridge', sets:2, lo:15, hi:15, unit:'reps', rest:30,
-        how:['Peeth ke bal, ghutne mode, pair zameen pe.','Hips upar, glutes dabao, 1 sec hold.','Kamar ko zyada mat modo.'],
-        hard:'Ek pair se (single-leg).', link:YT('glute bridge kaise kare') },
+        how:['Lie on your back, knees bent, feet on the floor.','Lift your hips, squeeze your glutes, hold 1 sec.','Do not arch your lower back too much.'],
+        hard:'On one leg (single-leg).', link:YT('glute bridge how to') },
       { id:'deadbug', anim:'deadbug', name:'Dead bug', sets:3, lo:8, hi:10, unit:'reps', side:true, rest:30,
-        how:['Peeth ke bal, haath chhat ki taraf, ghutne 90° pe.','Kamar zameen se chipki rahe.','Ulta haath + ulta pair dheere neeche, saans chhodte hue, phir wapas.'],
+        how:['Lie on your back, arms towards the ceiling, knees at 90°.','Keep your lower back pressed to the floor.','Slowly lower the opposite arm and leg while breathing out, then bring them back.'],
         link:YT('dead bug exercise form') },
       { id:'plank', anim:'plank', name:'Plank', sets:3, lo:30, hi:45, unit:'sec', rest:30,
-        how:['Elbow kandhe ke theek neeche.','Sir se edi seedhi line, pet aur glutes tight.','Saans chalti rahe. Kamar latakne lage to set khatam.'],
-        easy:'Ghutne zameen pe.', hard:'60 sec tak le jao.', link:YT('plank sahi tarika hindi') },
+        how:['Elbows right under your shoulders.','Straight line from head to heels, stomach and glutes tight.','Keep breathing. When your hips start to sag, the set is over.'],
+        easy:'Knees on the floor.', hard:'Build up to 60 sec.', link:YT('plank proper form') },
       { id:'legraise', anim:'legraise', name:'Lying leg raise', sets:3, lo:10, hi:12, unit:'reps', rest:30,
-        how:['Peeth ke bal, haath hips ke neeche.','Pair 90° tak upar, phir dheere neeche.','Kamar zameen se uthne lage to wahin ruko.'],
-        easy:'Ghutne mod ke.', link:YT('lying leg raise form') },
+        how:['Lie on your back, hands under your hips.','Raise your legs to 90°, then lower them slowly.','Stop where your lower back starts to lift off the floor.'],
+        easy:'With bent knees.', link:YT('lying leg raise form') },
       { id:'bicycle', anim:'bicycle', name:'Bicycle crunch', sets:2, lo:12, hi:15, unit:'reps', side:true, rest:30,
-        how:['Kandhe zameen se thode upar.','Ulti kohni ulte ghutne ki taraf, dheere twist.','Speed nahi. Gardan haath se mat kheecho.'],
-        link:YT('bicycle crunch sahi tarika') },
+        how:['Shoulders slightly off the floor.','Bring the opposite elbow towards the opposite knee with a slow twist.','No speed. Do not pull your neck with your hands.'],
+        link:YT('bicycle crunch proper form') },
       { id:'side', anim:'side', name:'Side plank', sets:2, lo:20, hi:30, unit:'sec', side:true, rest:20,
-        how:['Ek elbow pe, body side mein seedhi.','Hips girne nahi chahiye.','Dono side karo.'],
-        easy:'Neeche wala ghutna zameen pe.', link:YT('side plank beginner form') }
+        how:['On one elbow, body straight on its side.','Do not let your hips drop.','Do both sides.'],
+        easy:'Bottom knee on the floor.', link:YT('side plank beginner form') }
     ] }
 };
 var EXMAP = {};
@@ -635,45 +636,45 @@ ORDER.forEach(function(w){ W[w].main.forEach(function(e){ EXMAP[e.id] = e; }); }
 
 var BOX = {
   base: { secs:120, rounds:[
-    { desc:'Halka round. Jab + footwork, bag ke chaaron taraf ghoomo.', link:YT('boxing stance footwork beginner hindi') },
-    { desc:'1-2 (jab-cross). Speed nahi, form pe dhyan.', link:YT('jab cross technique beginner') },
+    { desc:'Easy round. Jab + footwork, move all around the bag.', link:YT('boxing stance footwork beginner') },
+    { desc:'1-2 (jab-cross). Form first, not speed.', link:YT('jab cross technique beginner') },
     { desc:'1-2-3 (jab-cross-hook).', link:YT('boxing hook technique beginner') },
-    { desc:'Uppercut mix: 1-2, phir 5-6.', link:YT('boxing uppercut technique beginner') },
-    { desc:'Finisher: 20 sec tez seedhe punch, 10 sec aaram, 4 baar.', segs:[[20,'Tez!'],[10,'Aaram'],[20,'Tez!'],[10,'Aaram'],[20,'Tez!'],[10,'Aaram'],[20,'Tez!'],[10,'Aaram']], link:YT('heavy bag workout beginner mistakes') }
+    { desc:'Uppercut mix: 1-2, then 5-6.', link:YT('boxing uppercut technique beginner') },
+    { desc:'Finisher: 20 sec fast straight punches, 10 sec rest, 4 times.', segs:[[20,'Fast!'],[10,'Rest'],[20,'Fast!'],[10,'Rest'],[20,'Fast!'],[10,'Rest'],[20,'Fast!'],[10,'Rest']], link:YT('heavy bag workout beginner mistakes') }
   ] },
   adv: { secs:180, rounds:[
-    { desc:'Jab + footwork, phir 1-2.', link:YT('boxing stance footwork beginner hindi') },
-    { desc:'1-2-3 combos, beech mein footwork.', link:YT('boxing hook technique beginner') },
+    { desc:'Jab + footwork, then 1-2.', link:YT('boxing stance footwork beginner') },
+    { desc:'1-2-3 combos with footwork in between.', link:YT('boxing hook technique beginner') },
     { desc:'Uppercut mix: 1-2-5-6.', link:YT('boxing uppercut technique beginner') },
-    { desc:'Finisher: 30 sec tez seedhe punch, 15 sec aaram, 4 baar.', segs:[[30,'Tez!'],[15,'Aaram'],[30,'Tez!'],[15,'Aaram'],[30,'Tez!'],[15,'Aaram'],[30,'Tez!'],[15,'Aaram']], link:YT('heavy bag workout beginner mistakes') }
+    { desc:'Finisher: 30 sec fast straight punches, 15 sec rest, 4 times.', segs:[[30,'Fast!'],[15,'Rest'],[30,'Fast!'],[15,'Rest'],[30,'Fast!'],[15,'Rest'],[30,'Fast!'],[15,'Rest']], link:YT('heavy bag workout beginner mistakes') }
   ] }
 };
 
-var FLEX = { name:'Stretch + Meditation', short:'Stretch', sub:'Pehle 10 min tez cardio, phir stretch aur 12 min meditation',
-  cardio: { name:'Tez cardio', secs:600,
-    segs:[[60,'High knees, halke','highknees',0.5],[60,'Jumping jacks, tez','jacks',1],[90,'Bag: tez seedhe punch','boxfast',1],[30,'Footwork, halke punch','box',0.5],[90,'Bag: 1-2 combo tez','boxfast',1],[30,'Footwork','box',0.5],[90,'Bag: 1-2-3 tez','boxfast',1],[30,'Footwork','box',0.5],[90,'Bag: jitna tez ho sake','boxfast',1],[30,'Halke chalo, saans normal','march',0.5]],
-    cues:['10 min bina ruke. Saans itni phoole ki poora vaakya na bol sako.','Bag wale hisse tez, footwork wale halke.','Gloves pehno. Chakkar ya seene mein dard ho to turant ruko.'],
-    helps:'Asli stamina yahi badhata hai. Ye body ko stretching ke liye garam bhi kar deta hai.', link:YT('heavy bag cardio workout beginner') },
+var FLEX = { name:'Stretch + Meditation', short:'Stretch', sub:'10 min fast cardio first, then stretching and 12 min meditation',
+  cardio: { name:'Fast cardio', secs:600,
+    segs:[[60,'High knees, easy','highknees',0.5],[60,'Jumping jacks, fast','jacks',1],[90,'Bag: fast straight punches','boxfast',1],[30,'Footwork, light punches','box',0.5],[90,'Bag: fast 1-2 combo','boxfast',1],[30,'Footwork','box',0.5],[90,'Bag: fast 1-2-3','boxfast',1],[30,'Footwork','box',0.5],[90,'Bag: as fast as you can','boxfast',1],[30,'Walk easy, breathe normally','march',0.5]],
+    cues:['10 min without stopping. Breathe hard enough that you cannot say a full sentence.','Bag parts fast, footwork parts easy.','Wear gloves. Stop at once if you feel dizzy or have chest pain.'],
+    helps:'This is what really builds stamina. It also warms your body up for stretching.', link:YT('heavy bag cardio workout beginner') },
   stretch: [
-    { name:'Doorway chest stretch', anim:'doorchest', segs:[[30,'Left side'],[30,'Right side'],[30,'Left side'],[30,'Right side']], cues:['Darwaze ki chaukhat pe haath, kohni kandhe ki height pe.','Ek pair aage, chest dheere aage le jao.','Khinchav ho, dard nahi. Saans chalti rahe.'], helps:'Push-up, dips aur punch se tight hui chest kholta hai.', link:YT('doorway chest stretch') },
-    { name:'Cross-body shoulder', anim:'crossbody', segs:[[30,'Left side'],[30,'Right side'],[30,'Left side'],[30,'Right side']], cues:['Ek haath seedha chest ke saamne laao.','Doosre haath se kohni ke upar dabao.','Kandha neeche rakho, upar mat uthao.'], helps:'Boxing aur rows ke baad kandhe ka peechhla hissa.', link:YT('cross body shoulder stretch') },
-    { name:'Overhead triceps', anim:'triceps', segs:[[30,'Left side'],[30,'Right side']], cues:['Haath upar, kohni modo, hatheli peeth pe.','Doosre haath se kohni ko halka peeche dabao.','Sir seedha, kamar mat modo.'], helps:'Diamond push-up aur dips ke baad triceps.', link:YT('overhead triceps stretch') },
-    { name:'Child\u2019s pose', anim:'child', segs:[[30,'Hold'],[30,'Aur thoda aage']], cues:['Ghutno pe baitho, hips edi pe.','Haath door aage zameen pe, maatha neeche.','Lambi saans, har saans pe hips thoda peeche.'], helps:'Australian pull aur rows ke baad lats aur kamar.', link:YT('child pose kaise kare') },
-    { name:'Thread the needle', anim:'thread', segs:[[30,'Left side'],[30,'Right side']], cues:['Haath-ghutno pe aao.','Ek haath doosre ke neeche se nikaalo, kandha zameen ki taraf.','Gardan dheeli, saans lambi.'], helps:'Boxing ka twist aur upper back.', link:YT('thread the needle stretch') },
-    { name:'Wrist stretch', anim:'wrist', segs:[[30,'Ungliyan neeche'],[30,'Ungliyan upar']], cues:['Haath seedha aage, hatheli bahar ki taraf.','Doosre haath se ungliyan apni taraf kheecho.','Phir hatheli ulti karke wahi.'], helps:'Push-up aur punch se kalaai pe load aata hai.', link:YT('wrist stretch for push ups') },
-    { name:'Kneeling hip flexor', anim:'hipflex', segs:[[30,'Left side'],[30,'Right side'],[30,'Left side'],[30,'Right side']], cues:['Ek ghutna zameen pe, doosra pair aage 90\u00b0.','Glutes dabao, hips dheere aage.','Kamar seedhi, aage mat jhuko.'], helps:'Lunges, squats aur der tak baithne ya khade rehne ke baad.', link:YT('kneeling hip flexor stretch') },
-    { name:'Seated hamstring', anim:'hamstring', segs:[[30,'Left side'],[30,'Right side'],[30,'Left side'],[30,'Right side']], cues:['Zameen pe baitho, ek pair seedha aage.','Peeth seedhi rakh ke hips se aage jhuko.','Ungliyon ki taraf pahuncho, ghutna lock mat karo.'], helps:'Squats, lunges aur leg raise ke liye.', link:YT('seated hamstring stretch') },
-    { name:'Standing quad', anim:'quad', segs:[[30,'Left side'],[30,'Right side']], cues:['Deewar pakad ke ek pair pe khade raho.','Doosra pair peeche se pakad ke edi glutes ki taraf.','Ghutne paas-paas, kamar seedhi.'], helps:'Squats aur lunges ke baad thigh.', link:YT('standing quad stretch') },
-    { name:'Figure-4 glute', anim:'fig4', segs:[[30,'Left side'],[30,'Right side'],[30,'Left side'],[30,'Right side']], cues:['Peeth ke bal, ek takhna doosre ghutne pe rakho.','Neeche wali thigh pakad ke chest ki taraf kheecho.','Hip mein khinchav, kamar zameen pe.'], helps:'Glutes aur hips: squat, bridge aur boxing stance.', link:YT('figure 4 stretch lying') },
-    { name:'Wall calf stretch', anim:'calf', segs:[[30,'Left side'],[30,'Right side']], cues:['Deewar pe haath, ek pair peeche seedha.','Peeche wali edi zameen pe dabao.','Aage wala ghutna modo, body deewar ki taraf.'], helps:'Boxing footwork aur high knees ke baad.', link:YT('wall calf stretch') },
-    { name:'Cobra', anim:'cobra', segs:[[30,'Hold'],[30,'Phir se hold']], cues:['Pet ke bal, haath kandhe ke neeche.','Haath se push karke chest upar, hips zameen pe.','Kamar mein dard ho to sirf kohni pe (sphinx).'], helps:'Abs day ke baad pet aur kamar.', link:YT('cobra pose kaise kare') }
+    { name:'Doorway chest stretch', anim:'doorchest', segs:[[30,'Left side'],[30,'Right side'],[30,'Left side'],[30,'Right side']], cues:['Forearm on the door frame, elbow at shoulder height.','One foot forward, move your chest slowly forward.','Feel a stretch, not pain. Keep breathing.'], helps:'Opens a chest that is tight from push-ups, dips and punching.', link:YT('doorway chest stretch') },
+    { name:'Cross-body shoulder', anim:'crossbody', segs:[[30,'Left side'],[30,'Right side'],[30,'Left side'],[30,'Right side']], cues:['Bring one arm straight across your chest.','Press above the elbow with the other hand.','Keep the shoulder down, do not shrug.'], helps:'Rear shoulder, after boxing and rows.', link:YT('cross body shoulder stretch') },
+    { name:'Overhead triceps', anim:'triceps', segs:[[30,'Left side'],[30,'Right side']], cues:['Arm up, bend the elbow, palm on your back.','Gently push the elbow back with the other hand.','Head straight, do not arch your back.'], helps:'Triceps, after diamond push-ups and dips.', link:YT('overhead triceps stretch') },
+    { name:'Child’s pose', anim:'child', segs:[[30,'Hold'],[30,'Reach a little further']], cues:['Kneel, hips on your heels.','Hands far forward on the floor, forehead down.','Breathe long; with each breath let your hips sink back a little.'], helps:'Lats and lower back, after Australian pull-ups and rows.', link:YT('child pose how to') },
+    { name:'Thread the needle', anim:'thread', segs:[[30,'Left side'],[30,'Right side']], cues:['Come onto hands and knees.','Slide one arm under the other, shoulder towards the floor.','Neck relaxed, breathe long.'], helps:'Upper back and the twist from boxing.', link:YT('thread the needle stretch') },
+    { name:'Wrist stretch', anim:'wrist', segs:[[30,'Fingers down'],[30,'Fingers up']], cues:['Arm straight in front, palm facing out.','Pull your fingers towards you with the other hand.','Then turn the palm over and repeat.'], helps:'Push-ups and punches load the wrists.', link:YT('wrist stretch for push ups') },
+    { name:'Kneeling hip flexor', anim:'hipflex', segs:[[30,'Left side'],[30,'Right side'],[30,'Left side'],[30,'Right side']], cues:['One knee on the floor, the other foot forward at 90°.','Squeeze your glutes, move your hips slowly forward.','Back straight, do not lean forward.'], helps:'After lunges, squats and long sitting or standing.', link:YT('kneeling hip flexor stretch') },
+    { name:'Seated hamstring', anim:'hamstring', segs:[[30,'Left side'],[30,'Right side'],[30,'Left side'],[30,'Right side']], cues:['Sit on the floor, one leg straight in front.','Keep your back straight and lean forward from the hips.','Reach for your toes; do not lock the knee.'], helps:'For squats, lunges and leg raises.', link:YT('seated hamstring stretch') },
+    { name:'Standing quad', anim:'quad', segs:[[30,'Left side'],[30,'Right side']], cues:['Hold a wall and stand on one leg.','Hold the other foot behind you, heel towards your glutes.','Knees together, back straight.'], helps:'Thighs, after squats and lunges.', link:YT('standing quad stretch') },
+    { name:'Figure-4 glute', anim:'fig4', segs:[[30,'Left side'],[30,'Right side'],[30,'Left side'],[30,'Right side']], cues:['Lie on your back, one ankle on the other knee.','Hold the lower thigh and pull it towards your chest.','Stretch in the hip, back flat on the floor.'], helps:'Glutes and hips: squats, bridges and the boxing stance.', link:YT('figure 4 stretch lying') },
+    { name:'Wall calf stretch', anim:'calf', segs:[[30,'Left side'],[30,'Right side']], cues:['Hands on the wall, one leg straight behind.','Press the back heel into the floor.','Bend the front knee, lean towards the wall.'], helps:'After boxing footwork and high knees.', link:YT('wall calf stretch') },
+    { name:'Cobra', anim:'cobra', segs:[[30,'Hold'],[30,'Hold again']], cues:['Lie on your stomach, hands under your shoulders.','Push up to lift your chest, hips stay on the floor.','If your lower back hurts, rest on your elbows instead (sphinx).'], helps:'Stomach and lower back, after abs day.', link:YT('cobra pose how to') }
   ],
   med: [
-    { name:'Belly breathing', secs:120, pattern:[['in',4,'Saans andar'],['out',6,'Saans bahar']], cues:['Seedha baitho, ek haath pet pe.','Naak se saans: pet bahar aaye, chest kam hile.','Bahar wali saans andar wali se lambi.'], helps:'Body ko calm mode mein laata hai.', link:YT('diaphragmatic breathing kaise kare') },
-    { name:'Box breathing', secs:180, pattern:[['in',4,'Saans andar'],['hold',4,'Roko'],['out',4,'Saans bahar'],['hold0',4,'Roko']], cues:['4 tak saans andar.','4 tak roko.','4 tak bahar, phir 4 tak roko. Yahi chakkar.'], helps:'Stress aur ghabrahat mein sabse kaam ka.', link:YT('box breathing 4 4 4 4') },
-    { name:'Anulom vilom', secs:180, pattern:[['in',4,'Left naak se andar'],['out',6,'Right naak se bahar'],['in',4,'Right naak se andar'],['out',6,'Left naak se bahar']], cues:['Right angootha right naak pe, left se andar.','Ungli se left band karo, right se bahar.','Phir right se andar, left se bahar.'], helps:'Saans pe control aur focus.', link:YT('anulom vilom kaise kare') },
-    { name:'Bhramari', secs:120, pattern:[['in',4,'Saans andar'],['out',8,'Hmmm\u2026 bahar']], cues:['Kaan angoothe se band karo, aankhein band.','Naak se lambi saans andar.','Bahar chhodte waqt munh band karke hmmm ki awaaz.'], helps:'Mann shaant karta hai, raat ko neend mein madad.', link:YT('bhramari pranayama kaise kare') },
-    { name:'Shaant baithna', secs:120, pattern:[['in',4,'Saans andar'],['out',6,'Saans bahar']], prompts:['Maatha aur aankhein dheeli chhodo.','Jabda dheela, daant alag.','Kandhe neeche girne do.','Pet naram, saans apne aap chalne do.','Haath aur pair bhaari mehsoos karo.','Bas saans ko dekho.'], cues:['Aankhein band, saans apne aap chalne do.','Awaaz jo bole, us hisse ko dheela chhodo.','Mann bhatke to wapas saans pe aao.'], helps:'Poore session ka aakhri, sabse shaant hissa.', link:YT('body scan meditation hindi') }
+    { name:'Belly breathing', secs:120, pattern:[['in',4,'Breathe in'],['out',6,'Breathe out']], cues:['Sit up straight, one hand on your stomach.','Breathe through your nose: stomach moves out, chest stays still.','Make the out-breath longer than the in-breath.'], helps:'Puts your body into calm mode.', link:YT('diaphragmatic breathing how to') },
+    { name:'Box breathing', secs:180, pattern:[['in',4,'Breathe in'],['hold',4,'Hold'],['out',4,'Breathe out'],['hold0',4,'Hold']], cues:['Breathe in for 4.','Hold for 4.','Breathe out for 4, then hold for 4. Repeat.'], helps:'Most useful for stress and nerves.', link:YT('box breathing 4 4 4 4') },
+    { name:'Alternate nostril breathing', secs:180, pattern:[['in',4,'In through the left nostril'],['out',6,'Out through the right'],['in',4,'In through the right'],['out',6,'Out through the left']], cues:['Right thumb on the right nostril, breathe in through the left.','Close the left with a finger, breathe out through the right.','Then in through the right, out through the left.'], helps:'Breath control and focus.', link:YT('alternate nostril breathing anulom vilom') },
+    { name:'Humming breath', secs:120, pattern:[['in',4,'Breathe in'],['out',8,'Hmmm… out']], cues:['Close your ears with your thumbs, eyes closed.','Take a long breath in through your nose.','Breathe out with your mouth closed, making a hmmm sound.'], helps:'Calms the mind and helps you sleep at night.', link:YT('bhramari pranayama humming bee breath') },
+    { name:'Sit quietly', secs:120, pattern:[['in',4,'Breathe in'],['out',6,'Breathe out']], prompts:['Relax your forehead and eyes.','Loose jaw, teeth apart.','Let your shoulders drop.','Soft stomach, let the breath come by itself.','Feel your arms and legs getting heavy.','Just watch your breath.'], cues:['Eyes closed, let the breath come by itself.','Relax whichever body part the voice names.','If your mind wanders, come back to the breath.'], helps:'The last and calmest part of the session.', link:YT('body scan meditation') }
   ]
 };
 function segsTotal(segs){ return segs.reduce(function(a, x){ return a + x[0]; }, 0); }
@@ -688,23 +689,44 @@ function vigEq(s){
 }
 var ADV_AFTER = 15;
 
-var LEVELS = [[0,'Shuruaat'],[250,'Josh'],[700,'Pakka Irada'],[1400,'Fauladi'],[2500,'Pehalwan'],[4000,'Sher'],[6000,'Champion'],[9000,'Legend']];
+/* calories: MET x 3.5 x kg / 200 per minute (Compendium of Physical Activities; estimates only) */
+var MET = { warmup:3.8, main:3.8, box:5.8, boxrest:1.3, cardio:7.5, stretch:2.3, med:1.0, prep:1.3, walk:4.3 };
+var PH_NAMES = { warmup:'Warm-up', main:'Exercises', box:'Boxing', boxrest:'Rest between rounds', cardio:'Fast cardio', stretch:'Stretching', med:'Meditation', prep:'Getting ready', walk:'Brisk walk' };
+var PH_ORDER = ['warmup','main','box','boxrest','cardio','stretch','med','prep','walk'];
+var DEF_KG = 70;
+function bodyKg(){ return (S.kg && S.kg.v) || DEF_KG; }
+/* seconds per phase; older saves without s.ph get an estimate from what was logged */
+function phaseSecs(s){
+  if(s.ph) return s.ph;
+  if(s.w === 'walk') return { walk: s.m*60 };
+  if(s.w === 'flex'){ var f = s.f || {}; return { cardio:(f.cd || 0)*60, stretch:(f.st || 0)*90, med:(f.md || 0)*60 }; }
+  var bm = (s.bxm || 2)*60, bx = (s.bx || 0)*bm, br = Math.max(0, (s.bx || 0) - 1)*60;
+  return { warmup:300, box:bx, boxrest:br, main:Math.max(0, (s.dur || 0)*60 - 300 - bx - br) };
+}
+function kcalOf(s, kg){
+  var ph = phaseSecs(s), k = 0;
+  Object.keys(ph).forEach(function(p){ k += (MET[p] || 1.3) * 3.5 * kg / 200 * (+ph[p] || 0) / 60; });
+  return Math.round(k);
+}
+function activeMin(s){ if(s.w === 'walk') return s.m; if(s.dur) return s.dur; var ph = phaseSecs(s), t = 0; Object.keys(ph).forEach(function(p){ t += ph[p]; }); return Math.round(t/60); }
+
+var LEVELS = [[0,'Starter'],[250,'Regular'],[700,'Committed'],[1400,'Strong'],[2500,'Fit'],[4000,'Very Fit'],[6000,'Champion'],[9000,'Legend']];
 var BADGES = [
-  { e:'👣', name:'Pehla Kadam', how:'Pehla workout', test:function(s){ return s.count >= 1; } },
-  { e:'🧘', name:'Shaant Mann', how:'Pehla stretch din', test:function(s){ return s.flex >= 1; } },
-  { e:'📅', name:'Poora Hafta', how:'Ek hafte mein 6 din', test:function(s){ return s.maxWeek >= 6; } },
-  { e:'🏆', name:'Record Todu', how:'Pehla naya record', test:function(s){ return s.prs >= 1; } },
-  { e:'💪', name:'10 Workout', how:'Kul 10 workout', test:function(s){ return s.count >= 10; } },
-  { e:'🌿', name:'Lachila', how:'10 stretch din', test:function(s){ return s.flex >= 10; } },
-  { e:'⏫', name:'Round Upgrade', how:'15 workout', test:function(s){ return s.count >= ADV_AFTER; } },
-  { e:'🔥', name:'Teen Hafte', how:'3 hafte lagataar 5+ din', test:function(s){ return s.streak >= 3; } },
-  { e:'🏃', name:'75 Club', how:'Ek hafte 75 tez minute', test:function(s){ return s.maxVig >= VIG_GOAL; } },
-  { e:'🥊', name:'Boxer', how:'Kul 50 round', test:function(s){ return s.rounds >= 50; } },
-  { e:'⭐', name:'1000 Reps', how:'Kul 1000 reps', test:function(s){ return s.reps >= 1000; } },
-  { e:'🎖️', name:'25 Workout', how:'Kul 25 workout', test:function(s){ return s.count >= 25; } },
-  { e:'👑', name:'50 Workout', how:'Kul 50 workout', test:function(s){ return s.count >= 50; } }
+  { e:'👣', name:'First Step', how:'First workout', test:function(s){ return s.count >= 1; } },
+  { e:'🧘', name:'Calm Mind', how:'First stretch day', test:function(s){ return s.flex >= 1; } },
+  { e:'📅', name:'Full Week', how:'6 days in one week', test:function(s){ return s.maxWeek >= 6; } },
+  { e:'🏆', name:'New Best', how:'First personal best', test:function(s){ return s.prs >= 1; } },
+  { e:'💪', name:'10 Workouts', how:'10 workouts in total', test:function(s){ return s.count >= 10; } },
+  { e:'🌿', name:'Flexible', how:'10 stretch days', test:function(s){ return s.flex >= 10; } },
+  { e:'⏫', name:'Round Upgrade', how:'15 workouts', test:function(s){ return s.count >= ADV_AFTER; } },
+  { e:'🔥', name:'Three Weeks', how:'3 weeks in a row with 5+ days', test:function(s){ return s.streak >= 3; } },
+  { e:'🏃', name:'75 Club', how:'75 vigorous minutes in a week', test:function(s){ return s.maxVig >= VIG_GOAL; } },
+  { e:'🥊', name:'Boxer', how:'50 rounds in total', test:function(s){ return s.rounds >= 50; } },
+  { e:'⭐', name:'1000 Reps', how:'1000 reps in total', test:function(s){ return s.reps >= 1000; } },
+  { e:'🎖️', name:'25 Workouts', how:'25 workouts in total', test:function(s){ return s.count >= 25; } },
+  { e:'👑', name:'50 Workouts', how:'50 workouts in total', test:function(s){ return s.count >= 50; } }
 ];
-var TIPS = ['Saans lo, kandhe dheele chhodo.','Paani ka ek ghoont le lo.','Agla set: ginti se pehle form.','Dheere neeche aana hi asli kaam hai.','Har set ginta hai. Bas agla.','Pet tight, peeth seedhi.'];
+var TIPS = ['Breathe, relax your shoulders.','Have a sip of water.','Next set: form before numbers.','Lowering slowly is the real work.','Every set counts. Just the next one.','Stomach tight, back straight.'];
 
 /* ---------- storage ---------- */
 var LS_KEY = 'gw_state_v1', RUN_KEY = 'gw_run_v1', SND_KEY = 'gw_sound2';
@@ -716,13 +738,15 @@ function normalize(o){
   o = o || {};
   var ses = Array.isArray(o.sessions) ? o.sessions.filter(function(s){ return s && (ORDER.indexOf(s.w) >= 0 || s.w === 'flex' || (s.w === 'walk' && typeof s.m === 'number')) && typeof s.t === 'number' && s.id; }) : [];
   var wa = Array.isArray(o.waist) ? o.waist.filter(function(x){ return x && typeof x.cm === 'number' && typeof x.d === 'string'; }) : [];
-  return { sessions: ses, waist: wa };
+  var kg = o.kg && typeof o.kg.v === 'number' && o.kg.v >= 25 && o.kg.v <= 250 && typeof o.kg.t === 'number' ? { v:o.kg.v, t:o.kg.t } : null;
+  return { sessions: ses, waist: wa, kg: kg };
 }
 function merge(a, b){
   var sm = {}, wm = {};
   a.sessions.concat(b.sessions).forEach(function(s){ sm[s.id] = s; });
   a.waist.concat(b.waist).forEach(function(x){ wm[x.d] = x; });
   return {
+    kg: !a.kg ? (b.kg || null) : !b.kg ? a.kg : (b.kg.t > a.kg.t ? b.kg : a.kg),
     sessions: Object.keys(sm).map(function(k){ return sm[k]; }).sort(function(x,y){ return x.t - y.t; }).slice(-150),
     waist: Object.keys(wm).map(function(k){ return wm[k]; }).sort(function(x,y){ return x.d < y.d ? -1 : 1; }).slice(-60)
   };
@@ -748,7 +772,7 @@ function initCloud(){
         var merged = merge(remote, S);
         S = merged; lsSet(LS_KEY, S);
         var p = Promise.resolve();
-        if(JSON.stringify(merged) !== JSON.stringify(remote) && (merged.sessions.length || merged.waist.length)) p = ref.set(clone(merged));
+        if(JSON.stringify(merged) !== JSON.stringify(remote) && (merged.sessions.length || merged.waist.length || merged.kg)) p = ref.set(clone(merged));
         return p.then(function(){ dbRef = ref; cloud = true; if(!R) render(); });
       });
     });
@@ -766,20 +790,21 @@ function fromIso(s){ var p = s.split('-').map(Number); return new Date(p[0], p[1
 function weekStart(d){ var x = new Date(d.getFullYear(), d.getMonth(), d.getDate()); x.setDate(x.getDate() - ((x.getDay()+6)%7)); return x; }
 function sortedSessions(){ return S.sessions.slice().sort(function(a,b){ return a.t - b.t; }); }
 function workSessions(){ return sortedSessions().filter(function(s){ return ORDER.indexOf(s.w) >= 0; }); }
-function nextWorkout(){ var s = workSessions(); if(!s.length) return 'pull'; return ORDER[(ORDER.indexOf(s[s.length-1].w)+1)%3]; }
+/* fixed week: Mon Pull, Wed Push, Fri Abs + Legs, Tue/Thu/Sat Stretch, Sun rest */
+function dayWorkout(d){ var g = d.getDay(); return g === 0 ? null : g === 1 ? 'pull' : g === 3 ? 'push' : g === 5 ? 'legs' : 'flex'; }
+function dayLabel(d){ var w = dayWorkout(d); return !w ? 'Rest (Sunday)' : w === 'flex' ? FLEX.name : W[w].name; }
 function isAdv(){ return workSessions().length >= ADV_AFTER; }
-function planType(d){ var g = d.getDay(); return g === 0 ? 'rest' : (g === 1 || g === 3 || g === 5) ? 'work' : 'flex'; }
-function sesName(w){ return w === 'flex' ? FLEX.name : w === 'walk' ? 'Tez walk' : W[w].name; }
+function sesName(w){ return w === 'flex' ? FLEX.name : w === 'walk' ? 'Brisk walk' : W[w].name; }
 function sesColor(w){ return w; }
 function exById(w, id){ return W[w].main.filter(function(e){ return e.id === id; })[0]; }
 function lastLogs(id){ var s = sortedSessions(); for(var i = s.length-1; i >= 0; i--){ var l = s[i].l && s[i].l[id]; if(l && l.some(function(v){ return v != null; })) return l; } return null; }
 function unitWord(ex){ return ex.unit === 'sec' ? 'sec' : ex.unit === 'taps' ? 'taps' : 'reps'; }
-function target(ex){ var r = ex.lo === ex.hi ? String(ex.lo) : ex.lo + '–' + ex.hi; return r + ' ' + unitWord(ex) + (ex.side ? ' har side' : ''); }
+function target(ex){ var r = ex.lo === ex.hi ? String(ex.lo) : ex.lo + '–' + ex.hi; return r + ' ' + unitWord(ex) + (ex.side ? ' each side' : ''); }
 function wvars(w){ return '--c:var(--' + w + ');--onc:var(--on-' + w + ')'; }
 function demoBtn(key){ return '<button class="demo-btn" data-act="demo" data-key="' + key + '">' + PLAY + '15 sec demo</button>'; }
 function fig(anim){ return '<svg class="fig" viewBox="0 0 240 140" data-anim="' + anim + '" aria-hidden="true"></svg>'; }
 var PLAY = '<svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 8.5v7l6-3.5z" fill="currentColor"/></svg>';
-function vid(href, label){ return '<a class="vid" href="' + esc(href) + '" target="_blank" rel="noopener">' + PLAY + esc(label || 'Video dekho') + '</a>'; }
+function vid(href, label){ return '<a class="vid" href="' + esc(href) + '" target="_blank" rel="noopener">' + PLAY + esc(label || 'Watch video') + '</a>'; }
 function toast(msg){ var t = $('#toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(toast._h); toast._h = setTimeout(function(){ t.classList.remove('show'); }, 2400); }
 
 /* ---------- XP, levels, badges ---------- */
@@ -840,11 +865,11 @@ function beep(f, d){
 }
 function vib(ms){ try{ if(soundMode >= 1 && navigator.vibrate) navigator.vibrate(ms); }catch(e){} }
 var VOICE = null, HAS_TTS = 'speechSynthesis' in window;
-function pickVoice(){ try{ var vs = window.speechSynthesis.getVoices(); VOICE = vs.filter(function(v){ return /^hi[-_]IN/i.test(v.lang); })[0] || vs.filter(function(v){ return /^en[-_]IN/i.test(v.lang); })[0] || null; }catch(e){} }
+function pickVoice(){ try{ var vs = window.speechSynthesis.getVoices(); VOICE = vs.filter(function(v){ return /^en[-_]IN/i.test(v.lang); })[0] || vs.filter(function(v){ return /^en[-_]/i.test(v.lang); })[0] || null; }catch(e){} }
 if(HAS_TTS){ pickVoice(); try{ window.speechSynthesis.onvoiceschanged = pickVoice; }catch(e){} }
 function say(text){
   if(soundMode < 2 || !HAS_TTS) return;
-  try{ window.speechSynthesis.cancel(); var u = new SpeechSynthesisUtterance(text); if(VOICE){ u.voice = VOICE; u.lang = VOICE.lang; } else u.lang = 'hi-IN'; u.rate = 1.02; window.speechSynthesis.speak(u); }catch(e){}
+  try{ window.speechSynthesis.cancel(); var u = new SpeechSynthesisUtterance(text); if(VOICE){ u.voice = VOICE; u.lang = VOICE.lang; } else u.lang = 'en-IN'; u.rate = 1.02; window.speechSynthesis.speak(u); }catch(e){}
 }
 var WL = null;
 function wakeOn(){ try{ if('wakeLock' in navigator) navigator.wakeLock.request('screen').then(function(l){ WL = l; }, function(){}); }catch(e){} }
@@ -906,166 +931,213 @@ function render(){
 function levelCard(st){
   var lv = levelOf(st.xp);
   return '<section class="card"><div class="lvl"><div class="lvl-n" aria-hidden="true">' + lv.n + '</div><div class="lvl-t"><small>Level ' + lv.n + '</small><b>' + esc(lv.name) + '</b></div><div class="lvl-xp"><b>' + num(st.xp) + '</b><small>XP</small></div></div>' +
-    '<div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + Math.round(lv.pct) + '" aria-label="Agle level tak progress"><i data-w="' + lv.pct.toFixed(1) + '"></i></div>' +
-    '<p class="small">' + (lv.to ? 'Agle level “' + esc(lv.nextName) + '” tak ' + num(lv.to - st.xp) + ' XP' : 'Sabse upar wala level. Legend!') + '</p>' +
-    '<div class="stats"><div class="stat"><b>' + num(st.count) + '</b><span>workout</span></div><div class="stat"><b>' + num(st.flex) + '</b><span>stretch din</span></div><div class="stat"><b>' + num(st.reps) + '</b><span>kul reps</span></div><div class="stat"><b>' + st.streak + '</b><span>hafte lagataar</span></div></div></section>';
+    '<div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + Math.round(lv.pct) + '" aria-label="Progress to next level"><i data-w="' + lv.pct.toFixed(1) + '"></i></div>' +
+    '<p class="small">' + (lv.to ? num(lv.to - st.xp) + ' XP to the next level, “' + esc(lv.nextName) + '”' : 'Top level reached. Legend!') + '</p>' +
+    '<div class="stats"><div class="stat"><b>' + num(st.count) + '</b><span>workouts</span></div><div class="stat"><b>' + num(st.flex) + '</b><span>stretch days</span></div><div class="stat"><b>' + num(st.reps) + '</b><span>total reps</span></div><div class="stat"><b>' + st.streak + '</b><span>weeks in a row</span></div></div></section>';
 }
 
 function renderHome(){
-  var now = new Date(), wd = now.getDay(), today = planType(now);
+  var now = new Date(), wd = now.getDay(), dw = dayWorkout(now);
   var run = lsGet(RUN_KEY);
   var runOk = run && (ORDER.indexOf(run.w) >= 0 || run.w === 'flex') && (Date.now() - run.startedAt) < 4*3600*1000;
-  var nw = nextWorkout();
-  var w = pick || (today === 'flex' ? 'flex' : nw);
+  var w = pick || dw || 'flex';
   var bp = isAdv() ? BOX.adv : BOX.base;
   var st = statsOf(S.sessions);
   var tom = new Date(now); tom.setDate(now.getDate() + 1);
-  var tomType = planType(tom), tomLabel = tomType === 'rest' ? 'Rest (Sunday)' : tomType === 'flex' ? FLEX.name : W[nw].name;
-  var h = '<header class="top"><h1>Ghar ka Workout</h1><span class="date">' + esc(dateLabel(now)) + '</span></header>';
+  var tomLabel = dayLabel(tom);
+  var h = '<header class="top"><h1>Personal Workout</h1><span class="date">' + esc(dateLabel(now)) + '</span></header>';
   if(runOk){
-    h += '<section class="card resume" style="margin:0 0 14px"><p><b>' + esc(sesName(run.w)) + '</b> adhoora reh gaya tha.</p><div class="row"><button class="btn btn-primary" data-act="resume">Jaari rakho</button><button class="btn btn-ghost" data-act="drop-run">Chhod do</button></div></section>';
+    h += '<section class="card resume" style="margin:0 0 14px"><p><b>' + esc(sesName(run.w)) + '</b> was left unfinished.</p><div class="row"><button class="btn btn-primary" data-act="resume">Continue</button><button class="btn btn-ghost" data-act="drop-run">Drop it</button></div></section>';
   }
   var todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
   var doneToday = S.sessions.filter(function(s){ return s.t >= todayStart && s.w !== 'walk'; }).pop();
-  var restHero = !override && !pick && (doneToday || today === 'rest');
+  var restHero = !override && !pick && (doneToday || !dw);
   if(restHero && doneToday){
-    h += '<section class="hero rest"><p class="lead">Aaj ka plan</p><h2 class="name">Ho gaya</h2><p class="sub">' + esc(sesName(doneToday.w)) + ' poora hua. Shabaash!</p><p class="meta">Kal: ' + esc(tomLabel) + '.</p><button class="btn btn-hero" data-act="override">Ek aur karna hai</button></section>';
+    h += '<section class="hero rest"><p class="lead">Today’s plan</p><h2 class="name">Done</h2><p class="sub">' + esc(sesName(doneToday.w)) + ' complete. Well done!</p><p class="meta">Tomorrow: ' + esc(tomLabel) + '.</p><button class="btn btn-hero" data-act="override">Do one more</button></section>';
   } else if(restHero){
-    h += '<section class="hero rest"><p class="lead">Sunday</p><h2 class="name">Rest</h2><p class="sub">Aaj poora aaram. Muscles aaj hi bante hain.</p><p class="meta">45–60 min tez walk karo to hafte ka cardio poora hoga. Kal: ' + esc(W[nw].name) + '.</p><button class="btn btn-hero" data-act="override">Phir bhi kuch karna hai</button></section>';
+    h += '<section class="hero rest"><p class="lead">Sunday</p><h2 class="name">Rest</h2><p class="sub">Full rest today. Muscles recover and grow on rest days.</p><p class="meta">A 45–60 min brisk walk completes your weekly cardio. Tomorrow: ' + esc(tomLabel) + '.</p><button class="btn btn-hero" data-act="override">I still want to do something</button></section>';
   } else if(w === 'flex'){
-    h += '<section class="hero" style="' + wvars('flex') + '"><p class="lead">' + (pick ? 'Tumhara chuna hua' : 'Aaj ka plan') + '</p><h2 class="name long">Stretch</h2>' + fig('doorchest') +
-      '<p class="sub">' + esc(FLEX.sub) + '</p><p class="meta">40 min: 10 tez cardio, 17 stretching, 12 meditation</p><button class="btn btn-hero" data-act="start" data-w="flex">Shuru karo</button></section>';
+    h += '<section class="hero" style="' + wvars('flex') + '"><p class="lead">' + (pick || !dw ? 'Your pick' : 'Today’s plan') + '</p><h2 class="name long">Stretch</h2>' + fig('doorchest') +
+      '<p class="sub">' + esc(FLEX.sub) + '</p><p class="meta">40 min: 10 fast cardio, 17 stretching, 12 meditation</p><button class="btn btn-hero" data-act="start" data-w="flex">Start</button></section>';
   } else {
     var d = W[w];
-    h += '<section class="hero" style="' + wvars(w) + '"><p class="lead">' + (pick && pick !== nw ? 'Tumhara chuna hua workout' : 'Aaj ka workout') + '</p><h2 class="name">' + esc(d.name) + '</h2>' + fig(d.main[0].anim) +
-      '<p class="sub">' + esc(d.sub) + '</p><p class="meta">45 min: 5 warmup, 25 workout, 15 boxing (' + bp.rounds.length + ' round x ' + (bp.secs/60) + ' min)</p><button class="btn btn-hero" data-act="start" data-w="' + w + '">Workout shuru karo</button></section>';
+    h += '<section class="hero" style="' + wvars(w) + '"><p class="lead">' + (pick && pick !== dw ? 'Your pick' : 'Today’s workout') + '</p><h2 class="name">' + esc(d.name) + '</h2>' + fig(d.main[0].anim) +
+      '<p class="sub">' + esc(d.sub) + '</p><p class="meta">45 min: 5 warm-up, 25 workout, 15 boxing (' + bp.rounds.length + ' rounds x ' + (bp.secs/60) + ' min)</p><button class="btn btn-hero" data-act="start" data-w="' + w + '">Start workout</button></section>';
   }
-  h += levelCard(st);
+  /* what to do today, and how much */
+  var showW = restHero ? (doneToday ? doneToday.w : null) : w;
+  if(showW){
+    var logs = doneToday && doneToday.w === showW ? doneToday : null;
+    h += '<h2 class="sec-h">' + (logs ? 'Today’s exercises: done' : 'Today’s exercises') + '</h2>';
+    if(showW === 'flex') h += flexBlocks() + medBlock();
+    else h += workoutBlocks(showW, logs) + boxRoundsCard(logs);
+  }
   var ws = weekStart(now), wst = ws.getTime();
   var wk = S.sessions.filter(function(s){ return s.t >= wst && s.w !== 'walk'; });
   var names = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'], dots = '';
   for(var k = 0; k < 7; k++){
     var a = new Date(ws); a.setDate(ws.getDate() + k); var b = new Date(ws); b.setDate(ws.getDate() + k + 1);
     var hit = wk.filter(function(s){ return s.t >= a.getTime() && s.t < b.getTime(); }).pop();
-    var pt = planType(a), isToday = ((wd + 6) % 7) === k;
-    var pc = pt === 'flex' ? 'var(--flex)' : pt === 'work' ? 'var(--ink)' : 'var(--line)';
-    dots += '<div class="day"><span class="dot' + (hit ? ' done' : '') + (isToday ? ' today' : '') + (pt === 'rest' ? ' off' : '') + '" style="--pc:' + pc + (hit ? ';--dc:var(--' + hit.w + ')' : '') + '"></span>' + names[k] + '</div>';
+    var pt = dayWorkout(a), isToday = ((wd + 6) % 7) === k;
+    var pc = pt === 'flex' ? 'var(--flex)' : pt ? 'var(--ink)' : 'var(--line)';
+    dots += '<div class="day"><span class="dot' + (hit ? ' done' : '') + (isToday ? ' today' : '') + (!pt ? ' off' : '') + '" style="--pc:' + pc + (hit ? ';--dc:var(--' + hit.w + ')' : '') + '"></span>' + names[k] + '</div>';
   }
   var left = Math.max(0, 6 - wk.length);
-  h += '<section class="card"><div class="card-h"><h3>Is hafte</h3><span class="count">' + Math.min(wk.length, 6) + ' / 6</span></div><div class="week-row">' + dots + '</div>' +
-    '<p class="small">Kaala ghera = workout din, neela = stretch din. ' + (left === 0 ? 'Poora hafta ho gaya!' : left === 1 ? 'Ek aur, aur hafta poora.' : left + ' din baaki.') + '</p></section>';
+  h += '<section class="card"><div class="card-h"><h3>This week</h3><span class="count">' + Math.min(wk.length, 6) + ' / 6</span></div><div class="week-row">' + dots + '</div>' +
+    '<p class="small">Black ring = workout day, blue = stretch day. ' + (left === 0 ? 'Full week done!' : left === 1 ? 'One more and the week is complete.' : left + ' days to go.') + '</p></section>';
   var vg = Math.round(st.thisVig), vp = Math.min(100, st.thisVig / VIG_GOAL * 100);
-  h += '<section class="card"><div class="card-h"><h3>Tez cardio is hafte</h3><span class="count">' + vg + ' / ' + VIG_GOAL + '</span></div>' +
-    '<div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="' + VIG_GOAL + '" aria-valuenow="' + vg + '" aria-label="Tez cardio minute"><i class="red" data-w="' + vp.toFixed(1) + '"></i></div>' +
-    '<p class="small">' + (vg >= VIG_GOAL ? 'Is hafte ka cardio poora!' : 'Boxing, cardio din aur tez walk milke. WHO minimum 75 tez minute hai; walk ka 1 min aadha ginta hai.') + '</p></section>';
-  h += '<section class="card"><h3>Tez walk ki?</h3><p class="small">Itni tez ki baat kar sako, gaa na sako. Log karo, cardio meter mein judegi.</p><div class="chips">' +
+  h += '<section class="card"><div class="card-h"><h3>Vigorous cardio this week</h3><span class="count">' + vg + ' / ' + VIG_GOAL + '</span></div>' +
+    '<div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="' + VIG_GOAL + '" aria-valuenow="' + vg + '" aria-label="Vigorous cardio minutes"><i class="red" data-w="' + vp.toFixed(1) + '"></i></div>' +
+    '<p class="small">' + (vg >= VIG_GOAL ? 'This week’s cardio is done!' : 'Boxing, cardio days and brisk walks together. The WHO minimum is 75 vigorous minutes a week; a walk minute counts as half.') + '</p></section>';
+  h += '<section class="card"><h3>Went for a brisk walk?</h3><p class="small">Fast enough that you can talk but not sing. Log it and it counts towards your cardio.</p><div class="chips">' +
     [20,30,45,60].map(function(m){ return '<button class="chip" style="' + wvars('flex') + '" data-act="walk" data-m="' + m + '">' + m + ' min</button>'; }).join('') + '</div></section>';
-  h += '<section class="card"><p>Kal: <b>' + esc(tomLabel) + '</b>.</p><p class="small">Aaj kuch aur karna hai? Chuno:</p><div class="chips">' +
+  h += '<section class="card"><p>Tomorrow: <b>' + esc(tomLabel) + '</b>.</p><p class="small">Want to do something else today? Pick one:</p><div class="chips">' +
     ORDER.concat(['flex']).map(function(x){ return '<button class="chip' + (x === w && !restHero ? ' on' : '') + '" style="' + wvars(x) + '" data-act="choose" data-w="' + x + '">' + (x === 'flex' ? 'Stretch' : W[x].name) + '</button>'; }).join('') + '</div></section>';
   return h;
 }
 
 function segSummary(segs){
   var sides = segs.filter(function(x){ return /side/i.test(x[1]); }).length;
-  if(sides) return (segs[0][0]) + ' sec x ' + (sides/2) + ', har side';
+  if(sides) return (segs[0][0]) + ' sec x ' + (sides/2) + ', each side';
   return segs.length > 1 ? segs[0][0] + ' sec x ' + segs.length : fmtS(segs[0][0]);
 }
 function patSummary(p){ return p.map(function(x){ return x[1]; }).join('-') + ' sec'; }
-function exDetails(ex, i, w){
-  return '<details class="ex"><summary><span class="ex-n">' + (i+1) + '</span><span class="ex-t"><b>' + esc(ex.name) + '</b><small>' + ex.sets + ' x ' + esc(target(ex)) + ', aaram ' + ex.rest + ' sec</small></span></summary><div class="ex-b">' + fig(ex.anim) + '<ul>' +
+function doneText(ex, logs){
+  var l = logs && logs.l && logs.l[ex.id], v = l ? l.filter(function(x){ return x != null; }) : [];
+  return v.length ? 'Done: ' + v.join(', ') + ' ' + unitWord(ex) : 'Skipped';
+}
+function exDetails(ex, i, w, logs){
+  return '<details class="ex"><summary><span class="ex-n">' + (i+1) + '</span><span class="ex-t"><b>' + esc(ex.name) + '</b><small>' + ex.sets + ' sets x ' + esc(target(ex)) + ', rest ' + ex.rest + ' sec' + (logs ? '<br>' + esc(doneText(ex, logs)) : '') + '</small></span></summary><div class="ex-b">' + fig(ex.anim) + '<ul>' +
     ex.how.map(function(x){ return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>' +
-    (ex.easy ? '<p><b>Aasan:</b> ' + esc(ex.easy) + '</p>' : '') + (ex.hard ? '<p><b>Mushkil:</b> ' + esc(ex.hard) + '</p>' : '') +
-    (ex.warn ? '<p class="warn">' + esc(ex.warn) + '</p>' : '') + '<div class="links">' + demoBtn('ex:' + ex.id) + vid(ex.link) + (ex.link2 ? vid(ex.link2, 'Table wala video') : '') + '</div></div></details>';
+    (ex.easy ? '<p><b>Easier:</b> ' + esc(ex.easy) + '</p>' : '') + (ex.hard ? '<p><b>Harder:</b> ' + esc(ex.hard) + '</p>' : '') +
+    (ex.warn ? '<p class="warn">' + esc(ex.warn) + '</p>' : '') + '<div class="links">' + demoBtn('ex:' + ex.id) + vid(ex.link) + (ex.link2 ? vid(ex.link2, 'Table version video') : '') + '</div></div></details>';
+}
+function workoutBlocks(w, logs){
+  var d = W[w];
+  return '<section class="card" style="' + wvars(w) + '"><h3>Warm-up, 5 min</h3>' + d.warmup.map(function(m, i){
+    return '<details class="ex"><summary><span class="ex-n">' + (i+1) + '</span><span class="ex-t"><b>' + esc(m.name) + '</b><small>' + esc(m.desc) + '</small></span><span class="ex-tm">' + fmtS(m.secs) + '</span></summary><div class="ex-b">' + fig(m.anim) + '<div class="links">' + demoBtn('wu:' + w + ':' + i) + (m.link ? vid(m.link) : '') + '</div></div></details>';
+  }).join('') + '</section>' +
+  '<section class="card" style="' + wvars(w) + '"><h3>Workout, 25 min</h3>' + d.main.map(function(ex, i){ return exDetails(ex, i, w, logs); }).join('') + '</section>';
+}
+function boxRoundsCard(logs){
+  var bp = isAdv() ? BOX.adv : BOX.base;
+  return '<section class="card" style="' + wvars('box') + '"><h3>Boxing, 15 min</h3><p class="small">' + bp.rounds.length + ' rounds x ' + (bp.secs/60) + ' min, 1 min rest in between. Gloves and hand wraps on.' + (logs ? ' Done: ' + (logs.bx || 0) + ' / ' + bp.rounds.length + ' rounds.' : '') + '</p>' + bp.rounds.map(function(r, i){
+    return '<details class="ex"><summary><span class="ex-n">' + (i+1) + '</span><span class="ex-t"><b>Round ' + (i+1) + '</b><small>' + esc(r.desc) + '</small></span><span class="ex-tm">' + fmtS(bp.secs) + '</span></summary><div class="ex-b"><div class="links">' + demoBtn('box:' + i) + vid(r.link) + '</div></div></details>';
+  }).join('') + '</section>';
+}
+function flexBlocks(){
+  var C = FLEX.cardio;
+  return '<section class="card" style="' + wvars('box') + '"><h3>Fast cardio, 10 min</h3>' + fig('boxfast') + '<ul class="wl">' + C.segs.map(function(x){ return '<li><span>' + esc(x[1]) + '</span><small>' + fmtS(x[0]) + '</small></li>'; }).join('') + '</ul><ul>' +
+    C.cues.map(function(c){ return '<li>' + esc(c) + '</li>'; }).join('') + '</ul><p class="small">' + esc(C.helps) + '</p><div class="links">' + demoBtn('cd:0') + vid(C.link) + '</div></section>' +
+  '<section class="card" style="' + wvars('flex') + '"><h3>Stretching, 17 min</h3><p class="small">Hold each stretch 30 sec, 60 sec in total for big muscles. Feel a stretch, not pain. No bouncing.</p>' + FLEX.stretch.map(function(x, i){
+    return '<details class="ex"><summary><span class="ex-n">' + (i+1) + '</span><span class="ex-t"><b>' + esc(x.name) + '</b><small>' + esc(segSummary(x.segs)) + '. ' + esc(x.helps) + '</small></span><span class="ex-tm">' + fmtS(segsTotal(x.segs)) + '</span></summary><div class="ex-b">' + fig(x.anim) + '<ul>' +
+      x.cues.map(function(c){ return '<li>' + esc(c) + '</li>'; }).join('') + '</ul><div class="links">' + demoBtn('st:' + i) + vid(x.link) + '</div></div></details>';
+  }).join('') + '</section>';
+}
+function medBlock(){
+  return '<section class="card" style="' + wvars('flex') + '"><h3>Meditation, 12 min</h3><p class="small">After stretching. Sit comfortably, back straight. If you feel dizzy or uneasy, go back to normal breathing.</p>' + FLEX.med.map(function(x, i){
+    return '<details class="ex"><summary><span class="ex-n">' + (i+1) + '</span><span class="ex-t"><b>' + esc(x.name) + '</b><small>' + esc(x.helps) + '</small></span><span class="ex-tm">' + fmtS(x.secs) + '</span></summary><div class="ex-b"><ul>' +
+      x.cues.map(function(c){ return '<li>' + esc(c) + '</li>'; }).join('') + '</ul><p class="small">Cycle: ' + esc(patSummary(x.pattern)) + '</p><div class="links">' + demoBtn('md:' + i) + vid(x.link) + '</div></div></details>';
+  }).join('') + '</section>';
 }
 function renderPlan(){
   var h = '<header class="top"><h1>Plan</h1></header>';
   var wk = [['Mon','pull'],['Tue','flex'],['Wed','push'],['Thu','flex'],['Fri','legs'],['Sat','flex'],['Sun',null]];
-  h += '<section class="card"><h3>Hafte ka plan</h3><ul class="wl">' + wk.map(function(r){
-    return '<li><b>' + r[0] + '</b>' + (r[1] ? '<span class="tag" style="' + wvars(r[1]) + '">' + esc(r[1] === 'flex' ? 'Cardio + ' + FLEX.name + ' (40 min)' : W[r[1]].name + ' + boxing (45 min)') + '</span>' : '<span class="small">Rest, ya tez walk</span>') + '</li>';
-  }).join('') + '</ul><p class="small" style="margin-top:8px">Koi workout chhoot gaya to agle workout din wahi karo. Aaj kya hai, app khud batata hai.</p></section>';
+  h += '<section class="card"><h3>Weekly plan</h3><ul class="wl">' + wk.map(function(r){
+    return '<li><b>' + r[0] + '</b>' + (r[1] ? '<span class="tag" style="' + wvars(r[1]) + '">' + esc(r[1] === 'flex' ? 'Cardio + ' + FLEX.name + ' (40 min)' : W[r[1]].name + ' + boxing (45 min)') + '</span>' : '<span class="small">Rest, or a brisk walk</span>') + '</li>';
+  }).join('') + '</ul><p class="small" style="margin-top:8px">The Today tab always shows that day’s plan. Missed a day? Carry on with today’s plan, or pick the missed one under “Pick one” on Today.</p></section>';
   var segs = [['pull','Pull'],['push','Push'],['legs','Abs + Legs'],['box','Boxing'],['flex','Stretch'],['med','Meditation']];
-  h += '<div class="seg" role="group" aria-label="Kya dekhna hai">' + segs.map(function(s){ var c = s[0] === 'med' ? 'flex' : s[0]; return '<button style="' + wvars(c) + '" data-act="plan-sel" data-w="' + s[0] + '" aria-pressed="' + (planSel === s[0]) + '">' + s[1] + '</button>'; }).join('') + '</div>';
+  h += '<div class="seg" role="group" aria-label="What to show">' + segs.map(function(s){ var c = s[0] === 'med' ? 'flex' : s[0]; return '<button style="' + wvars(c) + '" data-act="plan-sel" data-w="' + s[0] + '" aria-pressed="' + (planSel === s[0]) + '">' + s[1] + '</button>'; }).join('') + '</div>';
   if(planSel === 'box'){
     var bp = isAdv() ? BOX.adv : BOX.base;
-    h += '<section class="card" style="' + wvars('box') + '"><h3>Boxing, 15 min</h3>' + fig('box') + '<p>Har workout ke baad. ' + bp.rounds.length + ' round x ' + (bp.secs/60) + ' min, beech mein 1 min aaram.</p><p class="warn">Gloves aur hand wraps ke bina bag pe mat maaro. Pehle 2 hafte power nahi, sirf sahi technique.</p>' + vid(YT('hand wrap kaise bandhe boxing'), 'Hand wrap kaise bandhein') + '</section>';
+    h += '<section class="card" style="' + wvars('box') + '"><h3>Boxing, 15 min</h3>' + fig('box') + '<p>After every workout. ' + bp.rounds.length + ' rounds x ' + (bp.secs/60) + ' min, 1 min rest in between.</p><p class="warn">Never hit the bag without gloves and hand wraps. For the first 2 weeks, no power, only clean technique.</p>' + vid(YT('how to wrap hands for boxing'), 'How to wrap your hands') + '</section>';
     h += '<section class="card"><h3>Basics</h3><ul class="wl">' + [
-      ['Stance','Left pair aage, right peeche, ghutne thode mode. Haath chehre ke paas.'],
-      ['Punch ke baad','Haath turant chehre pe wapas. Punch pe chhoti saans chhodo.'],
-      ['Kalaai','Seedhi rakho, pehle 2 knuckles bag pe lagein.'],
-      ['Number','1 jab, 2 cross, 3 hook, 5/6 uppercut.']
+      ['Stance','Left foot forward, right foot back, knees slightly bent. Hands near your face.'],
+      ['After a punch','Bring the hand straight back to your face. Breathe out sharply with each punch.'],
+      ['Wrist','Keep it straight; land with the first 2 knuckles.'],
+      ['Numbers','1 jab, 2 cross, 3 hook, 5/6 uppercut.']
     ].map(function(r){ return '<li><b>' + r[0] + '</b><span style="text-align:right">' + r[1] + '</span></li>'; }).join('') + '</ul></section>';
-    h += '<section class="card" style="' + wvars('box') + '"><h3>Rounds</h3>' + bp.rounds.map(function(r, i){
-      return '<details class="ex"><summary><span class="ex-n">' + (i+1) + '</span><span class="ex-t"><b>Round ' + (i+1) + '</b><small>' + esc(r.desc) + '</small></span></summary><div class="ex-b"><div class="links">' + demoBtn('box:' + i) + vid(r.link) + '</div></div></details>';
-    }).join('') + '<p class="small" style="margin-top:10px">Push day pe kandhe thake hote hain: last 2 round mein power kam, form zyada. ' + (isAdv() ? '' : ADV_AFTER + ' workout ke baad app khud 4 round x 3 min kar dega.') + '</p></section>';
+    h += boxRoundsCard(null) + '<p class="small" style="margin:10px 4px 0">On push day your shoulders are tired: in the last 2 rounds use less power and more form. ' + (isAdv() ? '' : 'After ' + ADV_AFTER + ' workouts the app switches to 4 rounds x 3 min by itself.') + '</p>';
     return h;
   }
-  if(planSel === 'flex'){
-    var C = FLEX.cardio;
-    h += '<section class="card" style="' + wvars('box') + '"><h3>Tez cardio, 10 min</h3>' + fig('boxfast') + '<ul class="wl">' + C.segs.map(function(x){ return '<li><span>' + esc(x[1]) + '</span><small>' + fmtS(x[0]) + '</small></li>'; }).join('') + '</ul><ul>' +
-      C.cues.map(function(c){ return '<li>' + esc(c) + '</li>'; }).join('') + '</ul><p class="small">' + esc(C.helps) + '</p><div class="links">' + demoBtn('cd:0') + vid(C.link) + '</div></section>';
-    h += '<section class="card" style="' + wvars('flex') + '"><h3>Stretching, 17 min</h3><p class="small">Har stretch 30 sec hold, bade muscles ko kul 60 sec. Khinchav ho, dard nahi. Jhatke mat do.</p>' + FLEX.stretch.map(function(x, i){
-      return '<details class="ex"><summary><span class="ex-n">' + (i+1) + '</span><span class="ex-t"><b>' + esc(x.name) + '</b><small>' + esc(x.helps) + '</small></span><span class="ex-tm">' + fmtS(segsTotal(x.segs)) + '</span></summary><div class="ex-b">' + fig(x.anim) + '<ul>' +
-        x.cues.map(function(c){ return '<li>' + esc(c) + '</li>'; }).join('') + '</ul><p class="small">' + esc(segSummary(x.segs)) + '</p><div class="links">' + demoBtn('st:' + i) + vid(x.link) + '</div></div></details>';
-    }).join('') + '</section>';
-    return h;
-  }
-  if(planSel === 'med'){
-    h += '<section class="card" style="' + wvars('flex') + '"><h3>Meditation, 12 min</h3><p class="small">Stretching ke baad. Aaram se baitho, peeth seedhi. Chakkar ya bechaini ho to normal saans pe aa jao.</p>' + FLEX.med.map(function(x, i){
-      return '<details class="ex"><summary><span class="ex-n">' + (i+1) + '</span><span class="ex-t"><b>' + esc(x.name) + '</b><small>' + esc(x.helps) + '</small></span><span class="ex-tm">' + fmtS(x.secs) + '</span></summary><div class="ex-b"><ul>' +
-        x.cues.map(function(c){ return '<li>' + esc(c) + '</li>'; }).join('') + '</ul><p class="small">Chakkar: ' + esc(patSummary(x.pattern)) + '</p><div class="links">' + demoBtn('md:' + i) + vid(x.link) + '</div></div></details>';
-    }).join('') + '<p class="small" style="margin-top:10px">Ye saans ko control aur mann ko shaant karta hai. Daud-bhaag wala stamina asli mein boxing aur workout se badhta hai.</p></section>';
-    return h;
-  }
-  var d = W[planSel];
-  h += '<section class="card" style="' + wvars(planSel) + '"><h3>Warmup, 5 min</h3>' + d.warmup.map(function(m, i){
-    return '<details class="ex"><summary><span class="ex-n">' + (i+1) + '</span><span class="ex-t"><b>' + esc(m.name) + '</b><small>' + esc(m.desc) + '</small></span><span class="ex-tm">' + fmtS(m.secs) + '</span></summary><div class="ex-b">' + fig(m.anim) + '<div class="links">' + demoBtn('wu:' + planSel + ':' + i) + (m.link ? vid(m.link) : '') + '</div></div></details>';
-  }).join('') + '</section>';
-  h += '<section class="card" style="' + wvars(planSel) + '"><h3>Workout, 25 min</h3>' + d.main.map(function(ex, i){ return exDetails(ex, i, planSel); }).join('') + '</section>';
-  return h;
+  if(planSel === 'flex') return h + flexBlocks();
+  if(planSel === 'med') return h + medBlock() + '<p class="small" style="margin:10px 4px 0">This trains breath control and calms the mind. Real stamina comes from the boxing and the workouts.</p>';
+  return h + workoutBlocks(planSel, null);
 }
 
+function fmtMin(m){ m = Math.round(m); return m < 60 ? m + ' min' : Math.floor(m/60) + ' h ' + (m % 60) + ' min'; }
+function timeLabel(d){ return d.toLocaleTimeString('en-IN', { hour:'numeric', minute:'2-digit' }); }
+function periodRow(label, from, kg){
+  var list = S.sessions.filter(function(s){ return s.t >= from; });
+  var n = list.filter(function(s){ return s.w !== 'walk'; }).length, walks = list.length - n, min = 0, kc = 0;
+  list.forEach(function(s){ min += activeMin(s); kc += kcalOf(s, kg); });
+  return '<li><b>' + label + '</b><span style="text-align:right">' + n + ' session' + (n === 1 ? '' : 's') + (walks ? ' + ' + walks + ' walk' + (walks === 1 ? '' : 's') : '') + '<br><small>' + fmtMin(min) + ' · ' + num(kc) + ' kcal</small></span></li>';
+}
+function sessionRows(s, kg){
+  var ph = phaseSecs(s), rows = '';
+  var end = new Date(s.t + activeMin(s)*60000);
+  rows += '<p>' + (s.w === 'walk' ? 'Logged at ' + timeLabel(new Date(s.t)) : 'Started ' + timeLabel(new Date(s.t)) + ', finished ' + timeLabel(end)) + '</p>';
+  rows += '<p><b>Total: ' + fmtMin(activeMin(s)) + ' · about ' + num(kcalOf(s, kg)) + ' kcal</b></p>';
+  rows += '<ul class="wl">' + PH_ORDER.filter(function(p){ return ph[p] >= 30; }).map(function(p){
+    var one = {}; one[p] = ph[p];
+    return '<li><span>' + PH_NAMES[p] + '</span><small>' + fmtMin(ph[p]/60) + ' · ' + kcalOf({ ph:one }, kg) + ' kcal</small></li>';
+  }).join('') + '</ul>' + (s.ph || s.w === 'walk' ? '' : '<p class="small">Time split estimated (saved before time tracking).</p>');
+  if(s.w === 'flex'){ var f = s.f || {}; rows += '<p>Fast cardio: ' + (f.cd || 0) + ' min</p><p>Stretches: ' + (f.st || 0) + ' / ' + FLEX.stretch.length + '</p><p>Meditation: ' + (f.md || 0) + ' min</p>'; }
+  else if(s.w !== 'walk'){
+    var reps = 0, secs = 0;
+    rows += W[s.w].main.map(function(ex){
+      var l = s.l && s.l[ex.id], v = l ? l.filter(function(x){ return x != null; }) : [];
+      v.forEach(function(x){ if(ex.unit === 'sec') secs += x; else reps += x; });
+      return '<p>' + esc(ex.name) + ': ' + (v.length ? v.join(', ') + ' ' + unitWord(ex) + (ex.side ? ' each side' : '') : 'skipped') + '</p>';
+    }).join('') + '<p>Boxing: ' + (s.bx || 0) + ' rounds of ' + (s.bxm || 2) + ' min</p><p class="small">In total: ' + reps + ' reps' + (secs ? ', ' + secs + ' sec of holds' : '') + '.</p>';
+  }
+  return rows;
+}
 function renderRecord(){
-  var st = statsOf(S.sessions);
+  var st = statsOf(S.sessions), kg = bodyKg(), now = new Date();
   var h = '<header class="top"><h1>Record</h1></header>';
+  h += '<section class="card"><h3>Time and calories</h3><ul class="wl">' +
+    periodRow('Today', new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime(), kg) +
+    periodRow('This week', weekStart(now).getTime(), kg) +
+    periodRow('This month', new Date(now.getFullYear(), now.getMonth(), 1).getTime(), kg) +
+    periodRow('All time', 0, kg) + '</ul>' +
+    '<p class="small" style="margin-top:8px">Calories are an estimate for ' + kg + ' kg' + (S.kg ? '' : ' (default; save your weight below)') + ', from standard activity values. Real numbers vary by person.</p></section>';
+  h += '<section class="card"><h3>Body weight</h3><p class="small">Used only to estimate calories. Weigh in the morning before eating.</p>' +
+    (S.kg ? '<p class="wbig"><span class="cond">' + S.kg.v + '</span> kg <span class="small">' + esc(dateLabel(new Date(S.kg.t))) + '</span></p>' : '') +
+    '<div class="wrow"><label for="wkg" class="sr">Weight in kg</label><input id="wkg" type="number" inputmode="decimal" min="25" max="250" step="0.1" placeholder="kg"><button class="btn btn-primary" data-act="kg-save">Save</button></div></section>';
+  var ws = S.waist.slice().sort(function(a,b){ return a.d < b.d ? -1 : 1; });
+  var last = ws[ws.length-1], stat = '';
+  if(last){
+    if(last.cm < 85) stat = '<p class="ok">Within target.</p>';
+    else if(last.cm < 90) stat = '<p class="mid">Above target. Aim for under 85 cm.</p>';
+    else stat = '<p class="bad">90 cm or more: belly fat risk. Watch what you eat.</p>';
+  }
+  h += '<section class="card"><h3>Waist</h3><p class="small">Once a month, in the morning on an empty stomach, just above the navel. Target: under 85 cm (half your height).</p>' +
+    (last ? '<p class="wbig"><span class="cond">' + last.cm + '</span> cm <span class="small">' + esc(dateLabel(fromIso(last.d))) + '</span></p>' + stat : '') +
+    '<div class="wrow"><label for="wcm" class="sr">Waist in cm</label><input id="wcm" type="number" inputmode="decimal" min="50" max="150" step="0.5" placeholder="cm"><button class="btn btn-primary" data-act="waist-save">Save</button></div>' +
+    (ws.length > 1 ? '<ul class="wl">' + ws.slice(-6, -1).reverse().map(function(x){ return '<li><span>' + x.cm + ' cm</span><small>' + esc(dateLabel(fromIso(x.d))) + '</small></li>'; }).join('') + '</ul>' : '') + '</section>';
+  var ss = sortedSessions().reverse();
+  h += '<section class="card"><h3>History</h3><p class="small">Tap a session for full details.</p>';
+  if(!ss.length){
+    h += '<p>Nothing saved yet. Finish your first session and tap “Save”; it will show up here.</p>';
+  } else {
+    h += ss.slice(0, 60).map(function(s){
+      return '<details class="ses"><summary><span class="tag" style="' + wvars(s.w === 'walk' ? 'flex' : s.w) + '"><b>' + esc(s.w === 'flex' ? 'Stretch + Med' : sesName(s.w)) + '</b></span><span class="small">' + esc(dateLabel(new Date(s.t))) + ' · ' + fmtMin(activeMin(s)) + ' · ' + num(kcalOf(s, kg)) + ' kcal</span></summary><div class="ses-b">' + sessionRows(s, kg) + '</div></details>';
+    }).join('');
+  }
+  h += '</section>';
+  var bestRows = ORDER.map(function(w){ return W[w].main.filter(function(ex){ return st.best[ex.id] != null; }).map(function(ex){ return '<li><span class="tag" style="' + wvars(w) + '">' + esc(ex.name) + '</span><b>' + st.best[ex.id] + ' ' + unitWord(ex) + '</b></li>'; }).join(''); }).join('');
+  if(bestRows) h += '<section class="card"><h3>Your best sets</h3><p class="small">Most in a single set.</p><ul class="wl">' + bestRows + '</ul></section>';
   h += levelCard(st);
   var got = BADGES.filter(function(b){ return b.test(st); }).length;
   h += '<section class="card"><div class="card-h"><h3>Badges</h3><span class="small">' + got + ' / ' + BADGES.length + '</span></div><div class="badges">' + BADGES.map(function(b){
     var ok = b.test(st);
-    return '<div class="bdg' + (ok ? '' : ' locked') + '"><div class="m" aria-hidden="true">' + b.e + '</div><b>' + esc(b.name) + '</b><span>' + (ok ? 'Mil gaya' : esc(b.how)) + '</span></div>';
+    return '<div class="bdg' + (ok ? '' : ' locked') + '"><div class="m" aria-hidden="true">' + b.e + '</div><b>' + esc(b.name) + '</b><span>' + (ok ? 'Earned' : esc(b.how)) + '</span></div>';
   }).join('') + '</div></section>';
-  var bestRows = ORDER.map(function(w){ return W[w].main.filter(function(ex){ return st.best[ex.id] != null; }).map(function(ex){ return '<li><span class="tag" style="' + wvars(w) + '">' + esc(ex.name) + '</span><b>' + st.best[ex.id] + ' ' + unitWord(ex) + '</b></li>'; }).join(''); }).join('');
-  if(bestRows) h += '<section class="card"><h3>Tumhare records</h3><p class="small">Ek set mein sabse zyada. Inhe todo, XP bonus milega.</p><ul class="wl">' + bestRows + '</ul></section>';
-  var ws = S.waist.slice().sort(function(a,b){ return a.d < b.d ? -1 : 1; });
-  var last = ws[ws.length-1], stat = '';
-  if(last){
-    if(last.cm < 85) stat = '<p class="ok">Target ke andar.</p>';
-    else if(last.cm < 90) stat = '<p class="mid">Target se upar. 85 cm se kam laana hai.</p>';
-    else stat = '<p class="bad">90 cm ya upar: pet ki charbi wala risk. Khane pe dhyan do.</p>';
-  }
-  h += '<section class="card"><h3>Kamar (waist)</h3><p class="small">Mahine mein ek baar, subah khali pet, naabhi ke thoda upar naapo. Target: 85 cm se kam (height ka aadha).</p>' +
-    (last ? '<p class="wbig"><span class="cond">' + last.cm + '</span> cm <span class="small">' + esc(dateLabel(fromIso(last.d))) + '</span></p>' + stat : '') +
-    '<div class="wrow"><label for="wcm" class="sr">Kamar, cm mein</label><input id="wcm" type="number" inputmode="decimal" min="50" max="150" step="0.5" placeholder="cm mein likho"><button class="btn btn-primary" data-act="waist-save">Save karo</button></div>' +
-    (ws.length > 1 ? '<ul class="wl">' + ws.slice(-6, -1).reverse().map(function(x){ return '<li><span>' + x.cm + ' cm</span><small>' + esc(dateLabel(fromIso(x.d))) + '</small></li>'; }).join('') + '</ul>' : '') + '</section>';
-  var ss = sortedSessions().reverse();
-  h += '<section class="card"><h3>History</h3>';
-  if(!ss.length){
-    h += '<p>Abhi kuch save nahi hua. Pehla session poora karke “Save karo” dabao, yahan dikhega.</p>';
-  } else {
-    h += ss.slice(0, 40).map(function(s){
-      var rows = '';
-      if(s.w === 'walk'){ rows = '<p>Tez walk: ' + s.m + ' min</p>'; }
-      else if(s.w === 'flex'){ var f = s.f || {}; rows = '<p>Cardio: ' + (f.cd || 0) + ' min</p><p>Stretch: ' + (f.st || 0) + ' / ' + FLEX.stretch.length + '</p><p>Meditation: ' + (f.md || 0) + ' min</p>'; }
-      else {
-        rows = W[s.w].main.map(function(ex){ var l = s.l && s.l[ex.id]; if(!l) return ''; var v = l.filter(function(x){ return x != null; }); if(!v.length) return ''; return '<p>' + esc(ex.name) + ': ' + v.join(', ') + (ex.unit === 'sec' ? ' sec' : '') + '</p>'; }).join('') + '<p>Boxing: ' + (s.bx || 0) + ' round</p>';
-      }
-      return '<details class="ses"><summary><span class="tag" style="' + wvars(s.w === 'walk' ? 'flex' : s.w) + '"><b>' + esc(s.w === 'flex' ? 'Stretch + Med' : s.w === 'walk' ? 'Tez walk' : W[s.w].name) + '</b></span><span class="small">' + esc(dateLabel(new Date(s.t))) + (s.dur ? ', ' + s.dur + ' min' : '') + '</span></summary><div class="ses-b">' + rows + '</div></details>';
-    }).join('');
-  }
-  h += '</section>';
   if(!window.claude){
-    h += '<section class="card"><h3>Backup</h3><p class="small">Record sirf is phone mein hai. Phone badlo ya browser data saaf karo to chala jayega. Mahine mein ek baar backup file le lo.</p><div class="row"><button class="btn btn-primary" data-act="export">Backup file lo</button><label class="btn btn-ghost" for="impf">Backup se wapas laao</label><input id="impf" type="file" accept="application/json,.json" class="sr"></div></section>';
+    h += '<section class="card"><h3>Backup</h3><p class="small">Your record is saved only on this phone. If you change phones or clear browser data it will be gone. Take a backup file once a month.</p><div class="row"><button class="btn btn-primary" data-act="export">Download backup</button><label class="btn btn-ghost" for="impf">Restore from backup</label><input id="impf" type="file" accept="application/json,.json" class="sr"></div></section>';
   } else {
-    h += '<p class="small" style="margin:14px 4px 0">' + (cloud ? 'Record tumhare Claude account mein save hota hai, doosre device pe bhi dikhega.' : 'Record abhi sirf is browser mein save hai.') + '</p>';
+    h += '<p class="small" style="margin:14px 4px 0">' + (cloud ? 'Your record is saved to your Claude account and shows on your other devices too.' : 'Your record is saved only in this browser for now.') + '</p>';
   }
   return h;
 }
@@ -1102,7 +1174,10 @@ function buildSteps(w, adv){
 }
 function remaining(){ var t = R && R.timer; if(!t) return 0; return t.paused ? t.rem : Math.max(0, t.endAt - Date.now()); }
 function swSec(){ if(!R.sw) return 0; return R.sw.running ? Math.floor((Date.now() - R.sw.startAt)/1000) : R.sw.final; }
-function saveRun(){ if(R) lsSet(RUN_KEY, { w:R.w, adv:R.adv, i:R.i, logs:R.logs, startedAt:R.startedAt, boxDone:R.boxDone, stDone:R.stDone, mdDone:R.mdDone, cdDone:R.cdDone }); }
+function saveRun(){ if(R) lsSet(RUN_KEY, { w:R.w, adv:R.adv, i:R.i, logs:R.logs, startedAt:R.startedAt, boxDone:R.boxDone, stDone:R.stDone, mdDone:R.mdDone, cdDone:R.cdDone, ph:R.ph }); }
+/* time per phase for the record; one step counts at most 10 min (phone left aside) */
+function phaseKey(st){ if(!st || st.type === 'done') return null; if(st.type === 'boxprep' || st.type === 'medprep') return 'prep'; if(st.phase === 'box' && st.type === 'rest') return 'boxrest'; return st.phase; }
+function tally(){ var now = Date.now(), k = phaseKey(R.steps[R.i]); if(k && R.phAt) R.ph[k] = (R.ph[k] || 0) + Math.min((now - R.phAt)/1000, 600); R.phAt = now; }
 function flexF(){ var md = 0, cd = 0; Object.keys(R.mdDone).forEach(function(k){ md += R.mdDone[k]; }); Object.keys(R.cdDone).forEach(function(k){ cd += R.cdDone[k]; }); return { st:Object.keys(R.stDone).length, md:Math.round(md/60), cd:Math.round(cd/60), cv:cardioEq(cd) }; }
 function curSession(){ return R.w === 'flex' ? { w:'flex', f:flexF() } : { w:R.w, l:R.logs, bx:R.boxDone, bxm:R.adv ? 3 : 2 }; }
 function runXP(){ return scoreSession(curSession(), R.best).xp; }
@@ -1115,13 +1190,13 @@ function openRunner(){
 }
 function newRun(w, adv, extra){
   var st = statsOf(S.sessions);
-  return Object.assign({ w:w, adv:adv, steps:buildSteps(w, adv), i:0, logs:{}, startedAt:Date.now(), boxDone:0, stDone:{}, mdDone:{}, cdDone:{}, confirm:false, best:st.best, pr:{} }, extra || {});
+  return Object.assign({ w:w, adv:adv, steps:buildSteps(w, adv), i:0, logs:{}, startedAt:Date.now(), boxDone:0, stDone:{}, mdDone:{}, cdDone:{}, ph:{}, phAt:Date.now(), confirm:false, best:st.best, pr:{} }, extra || {});
 }
 function startRun(w){ audioInit(); R = newRun(w, isAdv()); openRunner(); go(0); }
 function resumeRun(){
   var run = lsGet(RUN_KEY); if(!run || !(ORDER.indexOf(run.w) >= 0 || run.w === 'flex')) return;
   audioInit();
-  R = newRun(run.w, !!run.adv, { logs:run.logs || {}, startedAt:run.startedAt, boxDone:run.boxDone || 0, stDone:run.stDone || {}, mdDone:run.mdDone || {}, cdDone:run.cdDone || {} });
+  R = newRun(run.w, !!run.adv, { logs:run.logs || {}, startedAt:run.startedAt, boxDone:run.boxDone || 0, stDone:run.stDone || {}, mdDone:run.mdDone || {}, cdDone:run.cdDone || {}, ph:run.ph || {} });
   openRunner(); go(Math.min(run.i || 0, R.steps.length-1));
 }
 function endRun(){
@@ -1131,27 +1206,28 @@ function endRun(){
   render();
 }
 function go(i){
+  tally();
   R.i = i; R.timer = null; R.sw = null; R.confirm = false; R.bph = null; R.bcyc = 0; R.bprompt = -1;
   var st = R.steps[i];
   if(st.type === 'timed' || st.type === 'rest' || st.type === 'breath') R.timer = { endAt:Date.now() + st.secs*1000, rem:st.secs*1000, total:st.secs*1000, paused:false, lb:null, seg:null };
   if(st.type === 'set'){
     var ex = exById(R.w, st.ex), mine = R.logs[ex.id], last = lastLogs(ex.id);
     R.val = (mine && mine[st.set-1] != null) ? mine[st.set-1] : (last && last[st.set-1] != null ? last[st.set-1] : ex.lo);
-    say(st.set === 1 ? ex.name + '. Set ek.' : 'Set ' + st.set + '.');
+    say(st.set === 1 ? ex.name + '. Set one.' : 'Set ' + st.set + '.');
   }
   if(st.type === 'timed' && st.phase === 'warmup') say(st.name);
   if(st.type === 'timed' && st.phase === 'stretch') say(st.name + '. ' + st.segs[0][1] + '.');
-  if(st.type === 'timed' && st.phase === 'cardio') say('Tez cardio. ' + st.segs[0][1] + '.');
-  if(st.type === 'timed' && st.phase === 'box') say('Round ' + st.round + '. Shuru!');
-  if(st.type === 'boxprep') say('Boxing ka time. Gloves pehno.');
-  if(st.type === 'medprep') say('Ab meditation. Aaram se baitho.');
+  if(st.type === 'timed' && st.phase === 'cardio') say('Fast cardio. ' + st.segs[0][1] + '.');
+  if(st.type === 'timed' && st.phase === 'box') say('Round ' + st.round + '. Go!');
+  if(st.type === 'boxprep') say('Boxing time. Gloves on.');
+  if(st.type === 'medprep') say('Now meditation. Sit comfortably.');
   if(st.type === 'breath') say(st.name + '.');
   if(st.type === 'done') prepDone();
   saveRun(); renderRunner();
   var b = document.querySelector('#runner .r-body'); if(b) b.scrollTop = 0;
   if(st.type === 'done'){
     beep(784, 0.18); setTimeout(function(){ beep(1046, 0.4); }, 200);
-    setTimeout(function(){ say(R && R.final.lvUp ? 'Shabaash! Level up!' : 'Shabaash! Poora hua.'); }, 300);
+    setTimeout(function(){ say(R && R.final.lvUp ? 'Well done! Level up!' : 'Well done! All finished.'); }, 300);
     confetti(R.final.lvUp ? 220 : 140);
     var bi = document.querySelector('#runner .bar i[data-w]');
     if(bi) setTimeout(function(){ bi.style.width = bi.dataset.w + '%'; }, 250);
@@ -1174,7 +1250,9 @@ function prev(){ var j = R.i - 1; while(j > 0 && R.steps[j].type === 'rest') j--
 
 function prepDone(){
   var base = curSession();
-  var s = Object.assign({ id: Date.now().toString(36) + Math.random().toString(36).slice(2,6), t:R.startedAt, dur:Math.max(1, Math.round((Date.now() - R.startedAt)/60000)) }, clone(base));
+  var ph = {}, tot = 0;
+  Object.keys(R.ph).forEach(function(k){ var v = Math.round(R.ph[k]); if(v > 0){ ph[k] = v; tot += v; } });
+  var s = Object.assign({ id: Date.now().toString(36) + Math.random().toString(36).slice(2,6), t:R.startedAt, dur:Math.max(1, Math.round(tot/60)), ph:ph }, clone(base));
   var before = statsOf(S.sessions), after = statsOf(S.sessions.concat([s]));
   var lb = levelOf(before.xp), la = levelOf(after.xp);
   R.final = { s:s, vig:after.thisVig, gain:after.xp - before.xp, lb:lb, la:la, lvUp:la.n > lb.n, badges:BADGES.filter(function(b){ return b.test(after) && !b.test(before); }), sc:scoreSession(s, before.best) };
@@ -1187,12 +1265,12 @@ var ICON = {
   s1:'<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9h4l5-4v14l-5-4H3z" fill="currentColor"/><path d="M15.5 8.5a5 5 0 010 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
   s0:'<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9h4l5-4v14l-5-4H3z" fill="currentColor"/><path d="M16 9l5 6M21 9l-5 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>'
 };
-var SOUND_NAMES = ['Awaaz band', 'Sirf beep', 'Beep + bolke batayega'];
+var SOUND_NAMES = ['Sound off', 'Beeps only', 'Beeps + voice'];
 function ring(ms, cls){
   return '<div class="ringwrap ' + (cls || '') + '"><svg viewBox="0 0 200 200" aria-hidden="true"><circle class="ring-bg" cx="100" cy="100" r="90"/><circle class="ring-fg" id="ring" cx="100" cy="100" r="90" stroke-dasharray="565.49" stroke-dashoffset="0"/></svg><div class="big" id="clk">' + fmt(ms) + '</div></div>';
 }
-function breathBox(){ return '<div class="breath" aria-hidden="true"><div class="bring"></div><div class="bcirc" id="bcirc"></div><div class="blabel"><span id="bl">Taiyaar</span><small id="bc"></small></div></div>'; }
-function cuesBlock(cues, helps, open){ return '<details class="how"' + (open ? ' open' : '') + '><summary>Kaise karein</summary><ul>' + cues.map(function(x){ return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>' + (helps ? '<p><b>Kyon:</b> ' + esc(helps) + '</p>' : '') + '</details>'; }
+function breathBox(){ return '<div class="breath" aria-hidden="true"><div class="bring"></div><div class="bcirc" id="bcirc"></div><div class="blabel"><span id="bl">Ready</span><small id="bc"></small></div></div>'; }
+function cuesBlock(cues, helps, open){ return '<details class="how"' + (open ? ' open' : '') + '><summary>How to do it</summary><ul>' + cues.map(function(x){ return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>' + (helps ? '<p><b>Why:</b> ' + esc(helps) + '</p>' : '') + '</details>'; }
 
 function renderRunner(){
   var el = $('#runner'), st = R.steps[R.i];
@@ -1201,9 +1279,9 @@ function renderRunner(){
   el.dataset.phase = isRound ? 'round' : (st.type === 'breath' || st.type === 'medprep') ? 'breath' : st.type;
   el.setAttribute('style', wvars(R.w));
   var pct = Math.round(R.i / (R.steps.length-1) * 100);
-  var phaseName = { warmup:'Warmup', main:'Workout', box:'Boxing', cardio:'Cardio', stretch:'Stretching', med:'Meditation', done:'Ho gaya' }[st.phase];
+  var phaseName = { warmup:'Warm-up', main:'Workout', box:'Boxing', cardio:'Cardio', stretch:'Stretching', med:'Meditation', done:'Done' }[st.phase];
   var body = '', foot = '';
-  var pauseFoot = '<button class="btn btn-ghost" data-act="pause" id="pz">Pause</button><button class="btn btn-primary" data-act="next">Agla</button>';
+  var pauseFoot = '<button class="btn btn-ghost" data-act="pause" id="pz">Pause</button><button class="btn btn-primary" data-act="next">Next</button>';
 
   if(st.type === 'timed' && st.phase === 'warmup'){
     var nx = R.steps[R.i+1];
@@ -1217,7 +1295,7 @@ function renderRunner(){
     foot = pauseFoot;
   } else if(st.phase === 'cardio'){
     var ck = R.timer ? segAt(st.segs, R.timer.total - remaining()).k : 0;
-    body = '<p class="r-k">Cardio, 10 min</p><h2 class="r-name">' + esc(st.name) + '</h2>' + fig(st.segs[ck][2]) + '<p class="iv" id="iv"></p>' + ring(st.secs*1000) +
+    body = '<p class="r-k">Fast cardio, 10 min</p><h2 class="r-name">' + esc(st.name) + '</h2>' + fig(st.segs[ck][2]) + '<p class="iv" id="iv"></p>' + ring(st.secs*1000) +
       cuesBlock(st.cues, st.helps, false) + '<div class="links center">' + demoBtn(st.demo) + vid(st.link) + '</div>';
     foot = pauseFoot;
   } else if(isRound){
@@ -1228,70 +1306,70 @@ function renderRunner(){
     foot = pauseFoot;
   } else if(st.type === 'breath'){
     body = '<p class="r-k">Meditation ' + st.k + ' / ' + st.of + '</p><h2 class="r-name">' + esc(st.name) + '</h2>' + breathBox() +
-      (st.prompts ? '<p class="r-desc" id="bp"></p>' : '') + '<p class="center small-c"><span id="clk">' + fmt(st.secs*1000) + '</span> baaki</p>' +
+      (st.prompts ? '<p class="r-desc" id="bp"></p>' : '') + '<p class="center small-c"><span id="clk">' + fmt(st.secs*1000) + '</span> left</p>' +
       cuesBlock(st.cues, st.helps, st.k === 1) + '<div class="links center">' + demoBtn(st.demo) + vid(st.link) + '</div>';
     foot = pauseFoot;
   } else if(st.type === 'medprep'){
-    body = '<p class="r-k">Meditation, 12 min</p><h2 class="r-name">Aaram se baitho</h2>' + breathBox() +
-      '<ul class="plain"><li>Zameen ya kursi pe baitho, peeth seedhi, kandhe dheele.</li><li>Aankhein band kar sakte ho. Beep aur awaaz batayegi kab andar, kab bahar.</li><li>Chakkar ya bechaini ho to normal saans pe aa jao.</li></ul>' +
-      '<p class="small-c">5 tarah ki saans: belly, box, anulom vilom, bhramari, phir shaant baithna.</p>';
-    foot = '<button class="btn btn-primary" data-act="next">Shuru karo</button>';
+    body = '<p class="r-k">Meditation, 12 min</p><h2 class="r-name">Sit comfortably</h2>' + breathBox() +
+      '<ul class="plain"><li>Sit on the floor or a chair, back straight, shoulders relaxed.</li><li>You can close your eyes. Beeps and the voice tell you when to breathe in and out.</li><li>If you feel dizzy or uneasy, go back to normal breathing.</li></ul>' +
+      '<p class="small-c">5 kinds of breathing: belly, box, alternate nostril, humming, then sitting quietly.</p>';
+    foot = '<button class="btn btn-primary" data-act="next">Start</button>';
   } else if(st.type === 'rest'){
     var n = R.steps[R.i+1], txt = '', nfig = '';
-    if(n.type === 'set'){ var ne = exById(R.w, n.ex); txt = 'Agla: ' + ne.name + ', set ' + n.set + ' / ' + ne.sets; if(n.set === 1) nfig = fig(ne.anim); }
-    else if(n.type === 'timed') txt = 'Agla: Round ' + n.round + '. ' + n.desc;
-    var tip = R.i > R.steps.length * 0.5 && !R.halfTold ? 'Aadhe se zyada ho gaya. Bas aise hi.' : TIPS[R.i % TIPS.length];
+    if(n.type === 'set'){ var ne = exById(R.w, n.ex); txt = 'Next: ' + ne.name + ', set ' + n.set + ' / ' + ne.sets; if(n.set === 1) nfig = fig(ne.anim); }
+    else if(n.type === 'timed') txt = 'Next: Round ' + n.round + '. ' + n.desc;
+    var tip = R.i > R.steps.length * 0.5 && !R.halfTold ? 'More than halfway. Keep it up.' : TIPS[R.i % TIPS.length];
     if(R.i > R.steps.length * 0.5) R.halfTold = true;
-    body = '<p class="r-k center">Aaram</p>' + ring(st.secs*1000, 'rest') + '<p class="r-next">' + esc(txt) + '</p>' + nfig + '<p class="coach">' + esc(tip) + '</p>';
+    body = '<p class="r-k center">Rest</p>' + ring(st.secs*1000, 'rest') + '<p class="r-next">' + esc(txt) + '</p>' + nfig + '<p class="coach">' + esc(tip) + '</p>';
     foot = '<button class="btn btn-ghost" data-act="plus15">+15 sec</button><button class="btn btn-primary" data-act="next">Skip</button>';
   } else if(st.type === 'set'){
     var ex = exById(R.w, st.ex), last = lastLogs(ex.id), best = R.best[ex.id], tipH = '';
     if(st.set === 1 && last && ex.hard && last.length >= ex.sets && last.every(function(v){ return v != null && v >= ex.hi; })){
-      tipH = '<p class="tip">Pichhli baar har set mein ' + ex.hi + ' ' + unitWord(ex) + ' aaye. Ab mushkil version try karo: ' + esc(ex.hard) + '</p>';
+      tipH = '<p class="tip">Last time you got ' + ex.hi + ' ' + unitWord(ex) + ' in every set. Try the harder version now: ' + esc(ex.hard) + '</p>';
     }
-    var sw = ex.unit === 'sec' ? '<div class="sw"><div class="big-sw" id="sw">0:00</div><button class="btn btn-ghost" data-act="sw" id="swb">Hold timer shuru</button></div>' : '';
+    var sw = ex.unit === 'sec' ? '<div class="sw"><div class="big-sw" id="sw">0:00</div><button class="btn btn-ghost" data-act="sw" id="swb">Start hold timer</button></div>' : '';
     body = '<p class="r-k">Exercise ' + st.ei + ' / ' + st.of + ', set ' + st.set + ' / ' + ex.sets + '</p><h2 class="r-name">' + esc(ex.name) + '</h2>' +
       '<p class="r-target">Target: ' + esc(target(ex)) + '</p>' +
-      ((last || best != null) ? '<p class="r-last">' + (last ? '<span>Pichhli baar: ' + last.filter(function(v){ return v != null; }).join(', ') + '</span>' : '') + (best != null ? '<span>Record: <b>' + best + '</b></span>' : '') + '</p>' : '') +
+      ((last || best != null) ? '<p class="r-last">' + (last ? '<span>Last time: ' + last.filter(function(v){ return v != null; }).join(', ') + '</span>' : '') + (best != null ? '<span>Best: <b>' + best + '</b></span>' : '') + '</p>' : '') +
       tipH + fig(ex.anim) + sw +
-      '<div class="stepper"><button data-act="minus" aria-label="Kam karo">−</button><output id="val">' + R.val + '</output><button data-act="plus" aria-label="Badhao">+</button></div><p class="unit" id="unit"></p>' +
-      '<details class="how"' + (st.set === 1 ? ' open' : '') + '><summary>Kaise karein</summary><ul>' + ex.how.map(function(x){ return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>' +
-      (ex.easy ? '<p><b>Aasan:</b> ' + esc(ex.easy) + '</p>' : '') + (ex.hard ? '<p><b>Mushkil:</b> ' + esc(ex.hard) + '</p>' : '') + (ex.warn ? '<p class="warn">' + esc(ex.warn) + '</p>' : '') + '</details>' +
-      '<div class="links">' + demoBtn('ex:' + ex.id) + vid(ex.link) + (ex.link2 ? vid(ex.link2, 'Table wala video') : '') + '</div>';
-    foot = '<button class="btn btn-primary" data-act="set-done">Set ho gaya</button>';
+      '<div class="stepper"><button data-act="minus" aria-label="Less">−</button><output id="val">' + R.val + '</output><button data-act="plus" aria-label="More">+</button></div><p class="unit" id="unit"></p>' +
+      '<details class="how"' + (st.set === 1 ? ' open' : '') + '><summary>How to do it</summary><ul>' + ex.how.map(function(x){ return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>' +
+      (ex.easy ? '<p><b>Easier:</b> ' + esc(ex.easy) + '</p>' : '') + (ex.hard ? '<p><b>Harder:</b> ' + esc(ex.hard) + '</p>' : '') + (ex.warn ? '<p class="warn">' + esc(ex.warn) + '</p>' : '') + '</details>' +
+      '<div class="links">' + demoBtn('ex:' + ex.id) + vid(ex.link) + (ex.link2 ? vid(ex.link2, 'Table version video') : '') + '</div>';
+    foot = '<button class="btn btn-primary" data-act="set-done">Set done</button>';
   } else if(st.type === 'boxprep'){
     var bp = R.adv ? BOX.adv : BOX.base;
-    body = '<p class="r-k">Boxing, 15 min</p><h2 class="r-name">Gloves pehno</h2>' + fig('box') + '<p class="warn">Gloves aur hand wraps ke bina bag pe mat maaro. Kalaai moch aur knuckles chhilna sabse common chot hai.</p><p>' + vid(YT('hand wrap kaise bandhe boxing'), 'Hand wrap kaise bandhein') + '</p>' +
-      '<details class="how"><summary>Basics</summary><ul><li>Stance: left pair aage, right peeche, ghutne thode mode.</li><li>Haath chehre ke paas, thodi neeche. Punch ke baad haath turant wapas.</li><li>Punch ke time chhoti saans chhodo.</li><li>Kalaai seedhi, pehle 2 knuckles bag pe lagein.</li><li>1 jab, 2 cross, 3 hook, 5/6 uppercut.</li></ul></details>' +
-      '<p class="small" style="margin-top:12px">' + bp.rounds.length + ' round x ' + (bp.secs/60) + ' min, beech mein 1 min aaram. Har poore round pe +12 XP.</p>';
-    foot = '<button class="btn btn-primary" data-act="next">Taiyaar hoon, round shuru</button>';
+    body = '<p class="r-k">Boxing, 15 min</p><h2 class="r-name">Gloves on</h2>' + fig('box') + '<p class="warn">Never hit the bag without gloves and hand wraps. Sprained wrists and scraped knuckles are the most common injuries.</p><p>' + vid(YT('how to wrap hands for boxing'), 'How to wrap your hands') + '</p>' +
+      '<details class="how"><summary>Basics</summary><ul><li>Stance: left foot forward, right foot back, knees slightly bent.</li><li>Hands near your face, chin down. After a punch, bring the hand straight back.</li><li>Breathe out sharply with each punch.</li><li>Wrist straight, land with the first 2 knuckles.</li><li>1 jab, 2 cross, 3 hook, 5/6 uppercut.</li></ul></details>' +
+      '<p class="small" style="margin-top:12px">' + bp.rounds.length + ' rounds x ' + (bp.secs/60) + ' min, 1 min rest in between. +12 XP for every full round.</p>';
+    foot = '<button class="btn btn-primary" data-act="next">Ready, start round</button>';
   } else if(st.type === 'done'){
     var F = R.final, rows = '';
     if(R.w === 'flex'){
-      rows = '<li><b>Tez cardio</b><span>' + F.s.f.cd + ' min</span></li><li><b>Stretching</b><span>' + F.s.f.st + ' / ' + FLEX.stretch.length + '</span></li><li><b>Meditation</b><span>' + F.s.f.md + ' min</span></li>';
+      rows = '<li><b>Fast cardio</b><span>' + F.s.f.cd + ' min</span></li><li><b>Stretching</b><span>' + F.s.f.st + ' / ' + FLEX.stretch.length + '</span></li><li><b>Meditation</b><span>' + F.s.f.md + ' min</span></li>';
     } else {
       var rounds = (R.adv ? BOX.adv : BOX.base).rounds.length;
-      rows = W[R.w].main.map(function(e){ var l = R.logs[e.id]; var v = l ? l.filter(function(x){ return x != null; }) : []; var isPr = F.sc.prList.indexOf(e.id) >= 0; return '<li><b>' + esc(e.name) + '</b><span>' + (v.length ? v.join(', ') : 'skip') + (isPr ? ' <em>record!</em>' : '') + '</span></li>'; }).join('') +
-        '<li><b>Boxing</b><span>' + R.boxDone + ' / ' + rounds + ' round</span></li>';
+      rows = W[R.w].main.map(function(e){ var l = R.logs[e.id]; var v = l ? l.filter(function(x){ return x != null; }) : []; var isPr = F.sc.prList.indexOf(e.id) >= 0; return '<li><b>' + esc(e.name) + '</b><span>' + (v.length ? v.join(', ') + ' ' + unitWord(e) : 'skipped') + (isPr ? ' <em>new best!</em>' : '') + '</span></li>'; }).join('') +
+        '<li><b>Boxing</b><span>' + R.boxDone + ' / ' + rounds + ' rounds</span></li>';
     }
     var startW = F.lvUp ? 0 : F.lb.pct;
-    var tom = new Date(); tom.setDate(tom.getDate() + 1); var tt = planType(tom);
-    var nxt = tt === 'rest' ? 'Kal Sunday, rest.' : tt === 'flex' ? 'Kal: ' + FLEX.name + '.' : 'Kal: ' + W[R.w === 'flex' ? nextWorkout() : ORDER[(ORDER.indexOf(R.w)+1)%3]].name + '.';
-    body = '<h2 class="r-name center">Shabaash!</h2><p class="center">' + esc(title) + ' poora hua, ' + F.s.dur + ' min.</p><p class="gain">+' + F.gain + ' XP</p>' +
-      (F.lvUp ? '<p class="lvup">Level up! Ab tum Level ' + F.la.n + ': ' + esc(F.la.name) + '</p>' : '') +
+    var tom = new Date(); tom.setDate(tom.getDate() + 1);
+    var nxt = 'Tomorrow: ' + dayLabel(tom) + '.';
+    body = '<h2 class="r-name center">Well done!</h2><p class="center">' + esc(title) + ' complete: ' + fmtMin(F.s.dur) + ', about ' + num(kcalOf(F.s, bodyKg())) + ' kcal.</p><p class="gain">+' + F.gain + ' XP</p>' +
+      (F.lvUp ? '<p class="lvup">Level up! You are now Level ' + F.la.n + ': ' + esc(F.la.name) + '</p>' : '') +
       '<div class="lvl" style="margin-top:8px"><div class="lvl-n" aria-hidden="true">' + F.la.n + '</div><div class="lvl-t"><small>Level ' + F.la.n + '</small><b>' + esc(F.la.name) + '</b></div></div>' +
       '<div class="bar"><i style="width:' + startW.toFixed(1) + '%" data-w="' + F.la.pct.toFixed(1) + '"></i></div>' +
-      (F.badges.length ? '<div class="badges">' + F.badges.map(function(b){ return '<div class="bdg"><div class="m" aria-hidden="true">' + b.e + '</div><b>' + esc(b.name) + '</b><span>Naya badge!</span></div>'; }).join('') + '</div>' : '') +
-      '<ul class="sum">' + rows + '<li><b>Tez cardio is hafte</b><span>' + Math.round(F.vig) + ' / ' + VIG_GOAL + ' min</span></li></ul><p class="small">' + esc(nxt) + '</p>';
-    foot = '<button class="btn btn-ghost" data-act="discard">Chhod do</button><button class="btn btn-primary" data-act="save">Save karo</button>';
+      (F.badges.length ? '<div class="badges">' + F.badges.map(function(b){ return '<div class="bdg"><div class="m" aria-hidden="true">' + b.e + '</div><b>' + esc(b.name) + '</b><span>New badge!</span></div>'; }).join('') + '</div>' : '') +
+      '<ul class="sum">' + rows + '<li><b>Vigorous cardio this week</b><span>' + Math.round(F.vig) + ' / ' + VIG_GOAL + ' min</span></li></ul><p class="small">' + esc(nxt) + '</p>';
+    foot = '<button class="btn btn-ghost" data-act="discard">Don\u2019t save</button><button class="btn btn-primary" data-act="save">Save</button>';
   }
   if(R.confirm){
-    foot = '<p class="cf">Band karna hai? Ye save nahi hoga.</p><button class="btn btn-ghost" data-act="confirm-no">Nahi, jaari rakho</button><button class="btn btn-danger" data-act="confirm-yes">Haan, band karo</button>';
+    foot = '<p class="cf">Stop now? This session will not be saved.</p><button class="btn btn-ghost" data-act="confirm-no">No, keep going</button><button class="btn btn-danger" data-act="confirm-yes">Yes, stop</button>';
   }
-  el.innerHTML = '<div class="r-head"><button class="icon-btn" data-act="back" aria-label="Pichhla step"' + (R.i === 0 ? ' disabled' : '') + '>' + ICON.back + '</button>' +
+  el.innerHTML = '<div class="r-head"><button class="icon-btn" data-act="back" aria-label="Previous step"' + (R.i === 0 ? ' disabled' : '') + '>' + ICON.back + '</button>' +
     '<div class="r-title">' + esc(title) + '<small>' + phaseName + '</small>' + (st.type !== 'done' ? '<span class="xp" id="xp">' + runXP() + ' XP</span>' : '') + '</div>' +
     '<button class="icon-btn" data-act="sound" aria-label="' + SOUND_NAMES[soundMode] + '">' + ICON['s' + soundMode] + '</button>' +
-    '<button class="icon-btn" data-act="close" aria-label="Band karo">' + ICON.close + '</button></div>' +
+    '<button class="icon-btn" data-act="close" aria-label="Close">' + ICON.close + '</button></div>' +
     '<div class="r-prog" aria-hidden="true"><i style="width:' + pct + '%"></i></div>' +
     '<div class="r-body">' + body + '</div><div class="r-foot">' + foot + '</div>';
   if(st.type === 'set') updateVal();
@@ -1304,7 +1382,7 @@ function updateVal(){
   var ex = exById(R.w, st.ex), best = R.best[ex.id];
   var o = document.getElementById('val'), u = document.getElementById('unit');
   if(o){ o.textContent = R.val; o.classList.toggle('pr', best != null && R.val > best); }
-  if(u) u.innerHTML = unitWord(ex) + ' kiye' + (ex.side ? ' (har side)' : '') + (best != null && R.val > best ? ' <b>Record se upar!</b>' : '');
+  if(u) u.innerHTML = unitWord(ex) + ' done' + (ex.side ? ' (each side)' : '') + (best != null && R.val > best ? ' <b>New best!</b>' : '');
 }
 
 function segAt(segs, elMs){
@@ -1337,7 +1415,7 @@ function updateClock(){
     }
   }
   var pz = document.getElementById('pz');
-  if(pz && R.timer) pz.textContent = R.timer.paused ? 'Chalu karo' : 'Pause';
+  if(pz && R.timer) pz.textContent = R.timer.paused ? 'Resume' : 'Pause';
   var swEl = document.getElementById('sw');
   if(swEl && R.sw){
     var s = swSec(); swEl.textContent = fmtS(s);
@@ -1368,7 +1446,7 @@ function paintBreath(root, b){
 function breathFrame(){
   if(!R) return;
   var st = R.steps[R.i];
-  if(st.type === 'medprep'){ var box = document.querySelector('#runner .breath'); if(box){ var e0 = (performance.now() - T0)/1000; paintBreath(box, breathState([['in',4,'Saans andar'],['out',6,'Saans bahar']], e0)); } return; }
+  if(st.type === 'medprep'){ var box = document.querySelector('#runner .breath'); if(box){ var e0 = (performance.now() - T0)/1000; paintBreath(box, breathState([['in',4,'Breathe in'],['out',6,'Breathe out']], e0)); } return; }
   if(st.type !== 'breath' || !R.timer) return;
   var el = (R.timer.total - remaining()) / 1000, b = breathState(st.pattern, el);
   var root = document.querySelector('#runner .breath'); if(root) paintBreath(root, b);
@@ -1404,7 +1482,7 @@ function demoSpec(key){
   if(p[0] === 'cd'){ var cdx = FLEX.cardio; return { name:cdx.name, anim:'boxfast', caps:cdx.cues, link:cdx.link, c:'box' }; }
   if(p[0] === 'st'){ var x = FLEX.stretch[+p[1]]; return { name:x.name, anim:x.anim, caps:x.cues, link:x.link, c:'flex' }; }
   if(p[0] === 'md'){ var y = FLEX.med[+p[1]]; return { name:y.name, pattern:y.pattern, caps:y.cues, link:y.link, c:'flex' }; }
-  if(p[0] === 'box'){ var r = (isAdv() ? BOX.adv : BOX.base).rounds[+p[1]]; return { name:'Round ' + (+p[1] + 1), anim:'box', caps:[r.desc, 'Haath hamesha chehre ke paas.', 'Punch ke baad haath turant wapas.'], link:r.link, c:'box' }; }
+  if(p[0] === 'box'){ var r = (isAdv() ? BOX.adv : BOX.base).rounds[+p[1]]; return { name:'Round ' + (+p[1] + 1), anim:'box', caps:[r.desc, 'Hands always near your face.', 'After each punch, bring the hand straight back.'], link:r.link, c:'box' }; }
   return null;
 }
 function openDemo(key){
@@ -1417,10 +1495,10 @@ function openDemo(key){
   D = { sp:sp, caps:caps, per:per, dur:per*caps.length, start:performance.now(), idx:-1, wasRunning:wasRunning, ended:false };
   var el = document.createElement('div'); el.className = 'demo'; el.id = 'demo';
   el.innerHTML = '<div class="demo-card' + (sp.pattern ? ' calm' : '') + '" role="dialog" aria-modal="true" aria-label="' + esc(sp.name) + ' demo" style="' + wvars(sp.c) + '">' +
-    '<div class="demo-top"><b>' + esc(sp.name) + '</b><button class="icon-btn" data-act="demo-close" aria-label="Demo band karo">' + ICON.close + '</button></div>' +
-    (sp.pattern ? '<div class="breath"><div class="bring"></div><div class="bcirc"></div><div class="blabel"><span data-bl>Taiyaar</span><small data-bc></small></div></div>' : fig(sp.anim)) +
+    '<div class="demo-top"><b>' + esc(sp.name) + '</b><button class="icon-btn" data-act="demo-close" aria-label="Close demo">' + ICON.close + '</button></div>' +
+    (sp.pattern ? '<div class="breath"><div class="bring"></div><div class="bcirc"></div><div class="blabel"><span data-bl>Ready</span><small data-bc></small></div></div>' : fig(sp.anim)) +
     '<p class="demo-step" id="dstep"></p><p class="demo-cap" id="dcap" aria-live="polite"></p><div class="demo-bar"><i id="dbar"></i></div>' +
-    '<div class="demo-foot"><button class="btn btn-ghost" data-act="demo-replay" id="drep">Dobara</button>' + (sp.link ? vid(sp.link, 'Poora video') : '') + '</div></div>';
+    '<div class="demo-foot"><button class="btn btn-ghost" data-act="demo-replay" id="drep">Replay</button>' + (sp.link ? vid(sp.link, 'Full video') : '') + '</div></div>';
   document.body.appendChild(el);
   if(RM) paintFigs(null);
   var cb = el.querySelector('[data-act="demo-close"]'); if(cb) cb.focus();
@@ -1445,7 +1523,7 @@ function demoFrame(){
     say(D.caps[idx]);
   }
   if(D.sp.pattern){ var b = breathState(D.sp.pattern, Math.min(el, D.dur)); paintBreath(root, b); }
-  if(done && !D.ended){ D.ended = true; var stp2 = document.getElementById('dstep'); if(stp2) stp2.textContent = 'Demo khatam'; }
+  if(done && !D.ended){ D.ended = true; var stp2 = document.getElementById('dstep'); if(stp2) stp2.textContent = 'Demo finished'; }
 }
 
 function saveSession(){
@@ -1455,7 +1533,7 @@ function saveSession(){
   pick = null; override = false; tab = 'aaj';
   endRun();
   persist().then(function(){ render(); });
-  toast('Save ho gaya, +' + F.gain + ' XP');
+  toast('Saved, +' + F.gain + ' XP');
 }
 
 function runnerAct(a){
@@ -1470,7 +1548,7 @@ function runnerAct(a){
       soundMode = (soundMode + 2) % 3; lsSet(SND_KEY, soundMode);
       if(soundMode > 0) audioInit();
       if(soundMode < 2 && HAS_TTS){ try{ window.speechSynthesis.cancel(); }catch(e){} }
-      toast(SOUND_NAMES[soundMode] + (soundMode === 2 && !HAS_TTS ? ' (is phone pe bolna nahi chalega)' : ''));
+      toast(SOUND_NAMES[soundMode] + (soundMode === 2 && !HAS_TTS ? ' (voice does not work on this phone)' : ''));
       renderRunner(); break;
     case 'pause':
       if(!R.timer) break;
@@ -1485,14 +1563,14 @@ function runnerAct(a){
     case 'minus': case 'plus':
       if(st.type !== 'set') break;
       var ex = exById(R.w, st.ex), step = ex.unit === 'sec' ? 5 : 1;
-      if(R.sw && R.sw.running){ R.sw.final = swSec(); R.sw.running = false; var sb = document.getElementById('swb'); if(sb) sb.textContent = 'Hold timer shuru'; }
+      if(R.sw && R.sw.running){ R.sw.final = swSec(); R.sw.running = false; var sb = document.getElementById('swb'); if(sb) sb.textContent = 'Start hold timer'; }
       R.val = Math.max(0, (R.val || 0) + (a === 'plus' ? step : -step));
       updateVal(); break;
     case 'sw':
       audioInit();
       var b = document.getElementById('swb');
-      if(!R.sw || !R.sw.running){ R.sw = { running:true, startAt:Date.now(), final:0, b1:false, b2:false }; if(b) b.textContent = 'Rok do'; say('Shuru'); }
-      else { R.sw.final = swSec(); R.sw.running = false; R.val = R.sw.final; updateVal(); if(b) b.textContent = 'Hold timer shuru'; }
+      if(!R.sw || !R.sw.running){ R.sw = { running:true, startAt:Date.now(), final:0, b1:false, b2:false }; if(b) b.textContent = 'Stop'; say('Go'); }
+      else { R.sw.final = swSec(); R.sw.running = false; R.val = R.sw.final; updateVal(); if(b) b.textContent = 'Start hold timer'; }
       break;
     case 'set-done':
       if(R.sw && R.sw.running){ R.sw.final = swSec(); R.sw.running = false; R.val = R.sw.final; }
@@ -1502,9 +1580,9 @@ function runnerAct(a){
       var gain = runXP() - before;
       if(best != null && R.val > best && !R.pr[exd.id]){
         R.pr[exd.id] = true;
-        flash('Naya record!', exd.name + ': ' + R.val + ' ' + unitWord(exd));
+        flash('New best!', exd.name + ': ' + R.val + ' ' + unitWord(exd));
         confetti(90); beep(880, 0.15); setTimeout(function(){ beep(1175, 0.35); }, 160);
-        setTimeout(function(){ say('Naya record!'); }, 450);
+        setTimeout(function(){ say('New best!'); }, 450);
       }
       xpFloat(gain);
       if(R.i < R.steps.length-1) go(R.i+1);
@@ -1518,17 +1596,17 @@ function runnerAct(a){
 function exportData(){
   try{
     var blob = new Blob([JSON.stringify(S, null, 1)], { type:'application/json' });
-    var a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'ghar-workout-backup-' + isoToday() + '.json';
+    var a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'personal-workout-backup-' + isoToday() + '.json';
     document.body.appendChild(a); a.click(); setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 1000);
-    toast('Backup file ban gayi');
-  }catch(e){ toast('Backup nahi ban paaya'); }
+    toast('Backup file saved');
+  }catch(e){ toast('Could not make the backup'); }
 }
 document.addEventListener('change', function(e){
   if(!e.target || e.target.id !== 'impf' || !e.target.files || !e.target.files[0]) return;
   var rd = new FileReader();
   rd.onload = function(){
-    try{ var data = normalize(JSON.parse(rd.result)); S = merge(S, data); persist(); render(); toast('Backup wapas aa gaya: ' + data.sessions.length + ' session'); }
-    catch(err){ toast('Ye file sahi backup nahi hai'); }
+    try{ var data = normalize(JSON.parse(rd.result)); S = merge(S, data); persist(); render(); toast('Backup restored: ' + data.sessions.length + ' sessions'); }
+    catch(err){ toast('This file is not a valid backup'); }
   };
   rd.readAsText(e.target.files[0]);
 });
@@ -1550,13 +1628,14 @@ document.addEventListener('click', function(e){
     case 'choose': pick = b.dataset.w; override = true; render(); break;
     case 'plan-sel': planSel = b.dataset.w; render(); break;
     case 'waist-save': saveWaist(); break;
+    case 'kg-save': saveKg(); break;
     case 'export': exportData(); break;
     case 'walk':
       var m = +b.dataset.m;
       S.sessions.push({ id: Date.now().toString(36) + Math.random().toString(36).slice(2,6), t:Date.now(), w:'walk', m:m });
       S = merge(S, { sessions:[], waist:[] });
       render(); persist().then(function(){ render(); });
-      toast(m + ' min walk log ho gayi, +' + m + ' XP'); break;
+      toast(m + ' min walk logged, +' + m + ' XP'); break;
   }
 });
 document.addEventListener('click', function(e){ if(e.target && e.target.id === 'demo') closeDemo(); });
@@ -1564,19 +1643,29 @@ document.addEventListener('toggle', function(){ if(RM) paintFigs(null); }, true)
 document.addEventListener('keydown', function(e){
   if(e.key === 'Escape' && D){ closeDemo(); return; }
   if(e.key === 'Enter' && e.target && e.target.id === 'wcm') saveWaist();
+  if(e.key === 'Enter' && e.target && e.target.id === 'wkg') saveKg();
 });
 document.addEventListener('visibilitychange', function(){ if(document.visibilityState === 'visible' && R){ wakeOn(); updateClock(); } });
 
 function saveWaist(){
   var inp = $('#wcm'); var v = parseFloat(inp && inp.value);
-  if(!(v >= 50 && v <= 150)){ toast('50 se 150 ke beech cm likho'); return; }
+  if(!(v >= 50 && v <= 150)){ toast('Enter a number between 50 and 150 cm'); return; }
   var d = isoToday();
   S.waist = S.waist.filter(function(x){ return x.d !== d; });
   S.waist.push({ d:d, cm:Math.round(v*2)/2 });
   S = merge(S, { sessions:[], waist:[] });
   render();
   persist().then(function(){ render(); });
-  toast('Kamar save ho gayi');
+  toast('Waist saved');
+}
+
+function saveKg(){
+  var inp = $('#wkg'); var v = parseFloat(inp && inp.value);
+  if(!(v >= 25 && v <= 250)){ toast('Enter a weight between 25 and 250 kg'); return; }
+  S.kg = { v:Math.round(v*10)/10, t:Date.now() };
+  render();
+  persist().then(function(){ render(); });
+  toast('Weight saved');
 }
 
 render();

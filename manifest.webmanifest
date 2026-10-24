@@ -1,14 +1,14 @@
 {
-  "name": "Ghar ka Workout",
-  "short_name": "Workout",
-  "description": "Pull, Push, Abs + Legs, boxing, stretching aur meditation",
+  "name": "Personal Workout",
+  "short_name": "Personal Workout",
+  "description": "Pull, Push, Abs + Legs, boxing, stretching and meditation",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#EEF2EE",
   "theme_color": "#12695B",
-  "lang": "hi",
+  "lang": "en",
   "icons": [
     {
       "src": "icon-192.png",
